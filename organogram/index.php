@@ -1,6 +1,16 @@
 <?php
-$versions = array('2014-09-30' => 'http://10.254.6.244/organograms-2014-09-30/sparql','2014-03-31' => 'http://10.254.6.244/organograms-2014-03-31/sparql', '2013-09-30' => 'http://10.254.6.244/organograms-2013-09-30/sparql','2013-03-31' => 'http://10.254.6.244/organograms-2013-03-31/sparql','2012-09-30' => 'http://10.254.6.244/organograms-2012-09-30/sparql', '2012-03-31' => 'http://10.254.6.244/organograms-2012-03-31/sparql', '2011-09-30' => 'http://10.254.6.244/organograms-2011-09-30/sparql', '2011-03-31' => 'http://10.254.6.244/organograms-2011-03-31/sparql');
-$thisPubbod = $_GET['pubbod'];
+$versions = array(
+    //sparql/organogram/query
+    '2014-09-30' => 'http://46.43.41.16//sparql/organogram/query',
+    '2014-03-31' => 'http://46.43.41.16/organograms-2014-03-31/sparql',
+    '2013-09-30' => 'http://46.43.41.16/organograms-2013-09-30/sparql',
+    '2013-03-31' => 'http://46.43.41.16/organograms-2013-03-31/sparql',
+    '2012-09-30' => 'http://46.43.41.16/organograms-2012-09-30/sparql',
+    '2012-03-31' => 'http://46.43.41.16/organograms-2012-03-31/sparql',
+    '2011-09-30' => 'http://46.43.41.16/organograms-2011-09-30/sparql',
+    '2011-03-31' => 'http://46.43.41.16/organograms-2011-03-31/sparql');
+    $thisPubbod = $_GET['pubbod'];
+
 $thisDept = $_GET['dept'];
 
 include 'functions.php';
@@ -11,8 +21,8 @@ if(isset($_GET['obscured'])){
 	$thisDept = base64_decode($thisDept);
 }
 
-$deptUri = "http://reference.data.gov.uk/id/department/" . $thisDept;
-$pubbodyUri = "http://reference.data.gov.uk/id/public-body/" . $thisPubbod;
+$deptUri = "http://reference2.data.gov.uk/2011-09-30/id/department/" . $thisDept;
+$pubbodyUri = "http://reference2.data.gov.uk/2011-09-30/id/public-body/" . $thisPubbod;
 
 $thisVersion = $_GET['version'];
 $arrVersions = getVersions($versions, $deptUri, $pubbodyUri);
