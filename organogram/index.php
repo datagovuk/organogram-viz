@@ -9,9 +9,13 @@ $versions = array(
     '2012-03-31' => 'http://46.43.41.16/organograms-2012-03-31/sparql',
     '2011-09-30' => 'http://46.43.41.16/organograms-2011-09-30/sparql',
     '2011-03-31' => 'http://46.43.41.16/organograms-2011-03-31/sparql');
-    $thisPubbod = $_GET['pubbod'];
+$thisPubbod = '';
+$thisDept = '';
 
-$thisDept = $_GET['dept'];
+if (!empty( $_GET['pubbod']))
+    $thisPubbod = $_GET['pubbod'];
+if (!empty( $_GET['dept']))
+    $thisDept = $_GET['dept'];
 
 include 'functions.php';
 
