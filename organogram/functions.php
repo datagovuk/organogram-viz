@@ -20,7 +20,7 @@ class API_cache {
     $this->_api_call_string = implode("_", $tw);
     $this->_update_interval = $int * 60; // minutes to seconds
     // use md5sum of the function call as filename (avoids bad character issues)
-    $this->_cache_file = "..\cache\\" . md5($this->_api_call_string);
+    $this->_cache_file = '../cache/' . md5($this->_api_call_string);
   }
 
   /*
