@@ -40,7 +40,9 @@ if($thisVersion==''){
 $arrDepts = getDepartmentsJSON($versions);
 
 //get the head post if not provided in the querystring
-$thisPost = $_GET['post'];
+$thisPost = '';
+if (!empty($_GET['post']))
+    $thisPost = $_GET['post'];
 
 // for now, ignore specified post as old links with posts will break things if the post doesn't exist anymore
 $thisPost = "";

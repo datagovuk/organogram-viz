@@ -92,11 +92,13 @@ function getDepartmentsJSON($versions) {
 		foreach($json->results->bindings as $line){
 			$uriParts = explode("/", $line->uri->value);
 			$type = $uriParts[4];
-			$parent = substr($line->parent->value, strrpos($line->parent->value, "/")  + 1);
+            $parent = '';
+            if (!empty($line->parent))
+			    $parent = substr($line->parent->value, strrpos($line->parent->value, "/")  + 1);
 			$deptName = str_replace("@en","",$line->dept->value);
 
 			$type = $type == 'department' ? 'dept' : 'pubbod';
-			$uri = "/gov-structure/organogram/?$type=" . $uriParts[5];
+			$uri = "/organogram/?$type=" . $uriParts[5];
 
 			$arrDepts[$uriParts[5]] = array('type' => $type, 'label' => $deptName, 'uri' => $uri, 'parent' => $parent);
 		}
