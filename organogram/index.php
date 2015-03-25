@@ -28,7 +28,9 @@ if(isset($_GET['obscured'])){
 $deptUri = "http://reference2.data.gov.uk/2011-09-30/id/department/" . $thisDept;
 $pubbodyUri = "http://reference2.data.gov.uk/2011-09-30/id/public-body/" . $thisPubbod;
 
-$thisVersion = $_GET['version'];
+$thisVersion = '';
+if (!empty($_GET['version']))
+    $thisVersion = $_GET['version'];
 $arrVersions = getVersions($versions, $deptUri, $pubbodyUri);
 if($thisVersion==''){
 	$thisVersion = $arrVersions[0]["version_value"];
