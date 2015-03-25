@@ -62,7 +62,9 @@ if ($thisPost==""){
 		$thisPost = substr($top_dog, $startPos + 1);
 	}
 }
-
+$preview = FALSE;
+if (!empty($_GET['preview']))
+    $preview = $_GET['preview'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -129,20 +131,20 @@ var versionsList =
 <![endif]-->
 
 <!--[if IE 7]>
-	<body class="IE7" onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $_GET['preview'];?>');"> 
+	<body class="IE7" onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $preview;?>');">
 <![endif]-->
 
 <!--[if IE 8]> 
-	<body class="IE8" onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $_GET['preview'];?>');"> 
+	<body class="IE8" onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $preview;?>');">
 <![endif]-->
 
 <!--[if IE 9]> 
-	<body class="IE9" onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $_GET['preview'];?>');"> 
+	<body class="IE9" onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $preview;?>');">
 <![endif]-->
 
 <![if !IE]>
 <body
-	onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $_GET['preview'];?>');">
+	onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $preview;?>');">
 <![endif]>
 
 
