@@ -39,28 +39,20 @@ if($thisVersion==''){
 //create array of ALL departments in ALL triplestores
 $arrDepts = getDepartmentsJSON($versions);
 
-//get the head post if not provided in the querystring
-$thisPost = '';
-if (!empty($_GET['post']))
-    $thisPost = $_GET['post'];
-
-// for now, ignore specified post as old links with posts will break things if the post doesn't exist anymore
 $thisPost = "";
-if ($thisPost==""){
-	$thisendPoint = $versions[$thisVersion];
-	//echo "{".$thisendPoint."}";
-	$deptURI = $deptUri;
-	if($thisDept==""){
-		$deptURI = $pubbodyUri;
-	}
-	$api_cache = new API_cache (array("getTopDog", $thisendPoint, $deptURI));
-	$top_dog = json_decode($api_cache->get_api_cache());
-	
-	if (count($top_dog->results->bindings) > 0) {
-		$top_dog = $top_dog->results->bindings[0]->item->value;
-		$startPos = strrpos($top_dog, "/");
-		$thisPost = substr($top_dog, $startPos + 1);
-	}
+$thisendPoint = $versions[$thisVersion];
+//echo "{".$thisendPoint."}";
+$deptURI = $deptUri;
+if($thisDept==""){
+    $deptURI = $pubbodyUri;
+}
+$api_cache = new API_cache (array("getTopDog", $thisendPoint, $deptURI));
+$top_dog = json_decode($api_cache->get_api_cache());
+
+if (count($top_dog->results->bindings) > 0) {
+    $top_dog = $top_dog->results->bindings[0]->item->value;
+    $startPos = strrpos($top_dog, "/");
+    $thisPost = substr($top_dog, $startPos + 1);
 }
 $preview = FALSE;
 if (!empty($_GET['preview']))
