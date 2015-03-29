@@ -60,11 +60,12 @@ var Orgvis = {
 		transX: 0, 				// Canvas translateOffsetX value
 		transY: 0,				// Canvas translateOffsetY value
 	 	apiBase:"",
+        refBase:"http://reference.data.gov.uk",
 	 	apiCallInfo: {},		// Stores information about each API call to be made}
 		firstLoad_expectedApiResponses:4, // Used to make the app wait until the correct number of API responses have been gathered
 		apiResponses:[],		// Stores JSON responses from the API
 		cacheObj:{},			// An object to store API responses
-		debug:false,				// Output to console or not
+		debug:true,				// Output to console or not
 		fakeTop: {
 			"_about": "http:\/\/reference.data.gov.uk\/id\/department\/top\/post\/top",
 			"label": ["Top Post"],
@@ -117,8 +118,9 @@ var Orgvis = {
 		} else{
 			Orgvis.vars.global_post = postSlug;		
 		}
-			
-		// Check for preview parameter
+        domain =  'reference2.data.gov.uk';
+
+        // Check for preview parameter
 		if(pMode == "true"){
 			log("Param: In preview mode");
 			// In preview mode
@@ -139,7 +141,7 @@ var Orgvis = {
 			//Orgvis.vars.apiBase = "192.168.1.74";
 			//Orgvis.vars.apiBase = "organogram.data.gov.uk/puelia5";
 			//Orgvis.vars.apiBase = "192.168.2.8/puelia5";
-			Orgvis.vars.apiBase = document.domain + "/" + strDateFolder; 
+			Orgvis.vars.apiBase = domain; //+ "/" + strDateFolder;
 			Orgvis.vars.previewParam = true;
 			Orgvis.vars.previewMode = true;			
 			Orgvis.initSpaceTree(reload);
@@ -152,13 +154,13 @@ var Orgvis = {
 			//Orgvis.vars.apiBase = "organogram.data.gov.uk";
 			//Orgvis.vars.apiBase = "organogram.data.gov.uk/puelia5";
 			//Orgvis.vars.apiBase = "192.168.2.8/puelia5";
-			Orgvis.vars.apiBase = document.domain + "/" + strDateFolder; 
+			Orgvis.vars.apiBase = domain;// + "/" + strDateFolder;
 			Orgvis.initSpaceTree(reload);
 		} else {
 			log("Not in preview mode");
 			// Not in preview mode
 			//Orgvis.vars.apiBase = "reference.data.gov.uk";
-			Orgvis.vars.apiBase = document.domain + "/" + strDateFolder; 
+			Orgvis.vars.apiBase = domain;// + "/" + strDateFolder;
 			Orgvis.initSpaceTree(reload);
 		}	
 		
@@ -441,7 +443,6 @@ var Orgvis = {
 								//log("### clicked, Orgvis.vars.postList[postID].data.childrenAdded="+Orgvis.vars.postList[postID].data.childrenAdded);
 
 								//log(node.data.gettingStats);
-								//log(node.data.gotStats);
 								if(!node.data.gotStats && !node.data.gettingStats){
 									node.data.gettingStats = true;
 									Orgvis.getStatisticsData(node);
@@ -708,7 +709,7 @@ var Orgvis = {
 		Orgvis.vars.apiCallInfo.topPosts = {
 			title:"Retrieval of top posts information",
 			description:"This call retrieves information about the top posts in the organogram (Posts that don't report to anyone)",
-			url:"http://"+Orgvis.vars.apiBase+"/doc/"+Orgvis.vars.global_typeOfOrg+"/"+Orgvis.vars.global_postOrg+"/top-post",
+			url:"http://"+Orgvis.vars.apiBase+"/"+strDateFolder+"/doc/"+Orgvis.vars.global_typeOfOrg+"/"+Orgvis.vars.global_postOrg+"/top-post",
 			parameters:""
 		};
 		
@@ -1449,8 +1450,10 @@ var Orgvis = {
 			Orgvis.vars.postInQuestionReportsTo.push(piqrtSlug);
 			
 			//log("Working out PIQRTSLUG...");
-			
-			if(typeof tempPostEl.reportsTo != 'undefined') {
+			//
+            //E.g. top-level post reportsTo is hardcoded to xx e.g. http://reference.data.gov.uk/id/department/co/post/xx
+            tlPostReportsTo = Orgvis.vars.refBase+"/id/"+Orgvis.vars.global_typeOfOrg+"/"+Orgvis.vars.global_postOrg+"/post/xx";
+			if(tempPostEl.reportsTo[0] != tlPostReportsTo) {
 				for(var a=tempPostEl.reportsTo.length;a--;){
 					//log(tempPostEl);
 					if(typeof tempPostEl.reportsTo[a]._about != 'undefined'){
@@ -1618,169 +1621,196 @@ var Orgvis = {
 		Orgvis.displayDataSources();
 
 	},
-	makeNode:function(item) {
-		
-		var node = {
-				id:$.generateId(),
-				name:"",
-				data:{
-					comment:item.comment,
-					note:item.note,
-					postIn:[],
-					reportsTo:[],
-					heldBy:[],
-					salaryRange:[],
-					totalWorkingTime:0
-				},
-				children:[]
-		};
-		
-		if(typeof item._about != 'undefined') {
-			node.data.uri = item._about;
-		}
-		
-		if(typeof item.label != 'undefined'){
-			node.name = item.label[0];
-		} else {
-			node.name = "?";
-		}
+    getLabel: function(item) {
+        if (typeof item.prefLabel != 'undefined'){
+            return item.prefLabel;
+        }
+        if (typeof item.label != 'undefined'){
+            return this.getValue(item.label);
+        } else {
+            return this.getValue(item);
+        }
+    },
+    getValue: function(item) {
+        if (Array.isArray(item))
+            item = item[0]
+        if (typeof item == 'string')
+            return item
+        if (item._value != 'undefined')
+            return item._value
+        return 'Unknown value'
+    },
+    makeNode:function(item) {
 
-		if(typeof item.grade != 'undefined' && typeof item.grade.label != 'undefined') {
-				node.data.grade = item.grade.label[0];
-		}
+        var node = {
+            id:$.generateId(),
+            name:"",
+            data:{
+                comment:item.comment,
+                note:item.note,
+                postIn:[],
+                reportsTo:[],
+                heldBy:[],
+                salaryRange:[],
+                totalWorkingTime:0
+            },
+            children:[]
+        };
 
-		if(typeof item.postIn != 'undefined'){
-			for(var a=item.postIn.length;a--;){		
-				node.data.postIn.push(item.postIn[a]);
-				if(item.postIn[a]._about.indexOf("/unit/") > 0){
-					if(typeof Orgvis.vars.unitList[Orgvis.getSlug(item.postIn[a]._about)] == 'undefined'){
-						Orgvis.vars.unitList[Orgvis.getSlug(item.postIn[a]._about)] = {
-							name:item.postIn[a].label[0],
-							uri:item.postIn[a]._about,
-							count:1
-						};		
-					} else {
-						Orgvis.vars.unitList[Orgvis.getSlug(item.postIn[a]._about)].count++;
-					}
-				}
-			}		
-		}
-		
-		// Handle posts that report to more than one post
-		if(typeof item.reportsTo != 'undefined'){
-			for(var a=item.reportsTo.length;a--;){
-				if(typeof item.reportsTo[a]._about != 'undefined'){
-					node.data.reportsTo.push(item.reportsTo[a]._about);
-				} else {
-					node.data.reportsTo.push(item.reportsTo[a]);
-				}
-			}	
-		}
-		
-		// Handle posts that are held by more than one person (before grouping)
-		if(typeof item.heldBy != 'undefined'){	
-			for(var a=item.heldBy.length;a--;){
-			
-				var person = {
-						reportsToPostURI:[],
-						salaryCostOfReports:-1,
-						workingTime:0
-				};
-				
-				var p = item.heldBy[a];
-							
-				if(typeof p.name != 'undefined'){
-					person.foafName = p.name;
-				}
-				if(typeof p.phone != 'undefined'){
-					person.foafPhone = p.phone.label[0];
-				}
-				if(typeof p.email != 'undefined'){
-					person.foafMbox = p.email.label[0];
-				}
-				if(typeof p.tenure != 'undefined' && typeof p.tenure.workingTime != 'undefined'){
-					person.workingTime = p.tenure.workingTime;
-				}
-				if(typeof p.profession != 'undefined' && typeof p.profession.prefLabel != 'undefined'){
-					person.profession = p.profession.prefLabel;
-				}
-				if(typeof item._about != 'undefined'){
-					person.holdsPostURI = item._about;
-				}
-				if(typeof item.comment != 'undefined'){
-					person.comment = item.comment;
-				}
-				if(typeof item.note != 'undefined'){
-					person.note = item.note;
-				}
-								
-				node.data.totalWorkingTime += person.workingTime;
-				
-				if(typeof item.reportsTo != 'undefined'){
-					for(var b=item.reportsTo.length;b--;){
-						person.reportsToPostURI.push(item.reportsTo[b]._about);
-					}
-				}
-				
-				node.data.heldBy.push(person);
-			}
-		} else {
-			// Create a dummy person for a vacant post
-			var person = {
-					foafName:"Vacant",
-					holdsPostURI:item._about,
-					reportsToPostURI:[],
-					salaryCostOfReports:-1,
-					workingTime:0
-			};
-			if(typeof item.comment != 'undefined'){
-				person.comment = item.comment;
-			}
-			if(typeof item.note != 'undefined'){
-				person.note = item.note;
-			}
-			if(typeof item.reportsTo != 'undefined'){
-				for(var b=item.reportsTo.length;b--;){
-					person.reportsToPostURI.push(item.reportsTo[b]._about);
-				}
-			}
-			
-			node.data.heldBy.push(person);
-		}
+        if(typeof item._about != 'undefined') {
+            node.data.uri = item._about;
+        }
 
-		if(typeof item.salaryRange != 'undefined'){
-			if(typeof item.salaryRange.label != 'undefined'){
-				// Post has one salary range
-				log(node.name+" has one salary range");
-				
-				// sometimes label is not present
-				try {
-					node.data.salaryRange.push(item.salaryRange.label[0]);
-				}
-				catch (err) {
-					
-				}
-			} else {
-				// Post has more than one salary range
-				log(node.name+" has more than one salary range");
-				for(var i in item.salaryRange){
-					try {
-						node.data.salaryRange.push(item.salaryRange[i].label[0]);	
-					}
-					catch (err) {
-					
-					}
-				}
-			}
-		} else {
-			// No salary present for post
-		}
-				
-		//log("made node:");
-		//log(node);
+        if(typeof item.label != 'undefined'){
+            node.name = this.getValue(item.label);
+        } else {
+            node.name = "?";
+        }
 
-		return node;
-	},
+        if(typeof item.grade != 'undefined') {
+            if (Array.isArray(item.grade)){
+                if (typeof item.grade[0].label != 'undefined'){
+                    node.data.grade = this.getValue(item.grade[0].label);
+                } else {
+                    node.data.grade = this.getValue(item.grade[0]);
+                }
+            } else {
+                node.data.grade = this.getValue(item.grade);
+            }
+        }
+
+        if(typeof item.postIn != 'undefined'){
+            for(var a=item.postIn.length;a--;){
+                node.data.postIn.push(item.postIn[a]);
+                if(item.postIn[a]._about.indexOf("/unit/") > 0){
+                    if(typeof Orgvis.vars.unitList[Orgvis.getSlug(item.postIn[a]._about)] == 'undefined'){
+                        Orgvis.vars.unitList[Orgvis.getSlug(item.postIn[a]._about)] = {
+                            name:this.getValue(item.postIn[a].label),
+                            uri:item.postIn[a]._about,
+                            count:1
+                        };
+                    } else {
+                        Orgvis.vars.unitList[Orgvis.getSlug(item.postIn[a]._about)].count++;
+                    }
+                }
+            }
+        }
+
+        // Handle posts that report to more than one post
+        if(typeof item.reportsTo != 'undefined'){
+            for(var a=item.reportsTo.length;a--;){
+                if(typeof item.reportsTo[a]._about != 'undefined'){
+                    node.data.reportsTo.push(item.reportsTo[a]._about);
+                } else {
+                    node.data.reportsTo.push(item.reportsTo[a]);
+                }
+            }
+        }
+
+        // Handle posts that are held by more than one person (before grouping)
+        if(typeof item.heldBy != 'undefined'){
+            for(var a=item.heldBy.length;a--;){
+
+                var person = {
+                    reportsToPostURI:[],
+                    salaryCostOfReports:-1,
+                    workingTime:0
+                };
+
+                var p = item.heldBy[a];
+
+                if(typeof p.name != 'undefined'){
+                    person.foafName = this.getValue(p.name);
+                }
+                if(typeof p.phone != 'undefined'){
+                    person.foafPhone = this.getValue(this.getLabel(p.phone));
+                }
+                if(typeof p.email != 'undefined'){
+                    person.foafMbox = this.getValue(this.getLabel(p.email));
+                }
+                if(typeof p.tenure != 'undefined' && typeof p.tenure.workingTime != 'undefined'){
+                    person.workingTime = p.tenure.workingTime;
+                }
+                if(typeof p.profession != 'undefined'){
+                    person.profession = this.getValue(this.getLabel(p.profession));
+                }
+                if(typeof item._about != 'undefined'){
+                    person.holdsPostURI = item._about;
+                }
+                if(typeof item.comment != 'undefined'){
+                    person.comment = this.getValue(item.comment);
+                }
+                if(typeof item.note != 'undefined'){
+                    person.note = this.getValue(item.note);
+                }
+
+                node.data.totalWorkingTime += person.workingTime;
+
+                if(typeof item.reportsTo != 'undefined'){
+                    for(var b=item.reportsTo.length;b--;){
+                        person.reportsToPostURI.push(item.reportsTo[b]._about);
+                    }
+                }
+
+                node.data.heldBy.push(person);
+            }
+        } else {
+            // Create a dummy person for a vacant post
+            var person = {
+                foafName:"Vacant",
+                holdsPostURI:item._about,
+                reportsToPostURI:[],
+                salaryCostOfReports:-1,
+                workingTime:0
+            };
+            if(typeof item.comment != 'undefined'){
+                person.comment = item.comment;
+            }
+            if(typeof item.note != 'undefined'){
+                person.note = item.note;
+            }
+            if(typeof item.reportsTo != 'undefined'){
+                for(var b=item.reportsTo.length;b--;){
+                    person.reportsToPostURI.push(item.reportsTo[b]._about);
+                }
+            }
+
+            node.data.heldBy.push(person);
+        }
+
+        if(typeof item.salaryRange != 'undefined'){
+            if(typeof item.salaryRange.label != 'undefined'){
+                // Post has one salary range
+                log(node.name+" has one salary range");
+
+                // sometimes label is not present
+                try {
+                    node.data.salaryRange.push(item.salaryRange.label[0]);
+                }
+                catch (err) {
+
+                }
+            } else {
+                // Post has more than one salary range
+                log(node.name+" has more than one salary range");
+                for(var i in item.salaryRange){
+                    try {
+                        node.data.salaryRange.push(this.getValue(item.salaryRange[i].label));
+                    }
+                    catch (err) {
+
+                    }
+                }
+            }
+        } else {
+            // No salary present for post
+        }
+
+        //log("made node:");
+        //log(node);
+
+        return node;
+    },
 	makeJuniorPostNode:function(el){
 		
 		//log("makeJuniorPostNode: using item:");
@@ -2905,10 +2935,14 @@ function sort_prop() {
     }
 }
 function sortByLabel(){
-	return function (a,b) {
-        return (a.label[0].toLowerCase() < b.label[0].toLowerCase()) ? -1 : (a.label[0].toLowerCase() > b.label[0].toLowerCase()) ? 1 : 0;
+    return function (a,b) {
+        if (typeof a.label[0] == 'string')
+            return (a.label[0].toLowerCase() < b.label[0].toLowerCase()) ? -1 : (a.label[0].toLowerCase() > b.label[0].toLowerCase()) ? 1 : 0;
+        else
+            return (a.label[0]._value.toLowerCase() < b.label[0]._value.toLowerCase()) ? -1 : (a.label[0]._value.toLowerCase() > b.label[0]._value.toLowerCase()) ? 1 : 0;
     }
 }
+
 // fn to handle jsonp with timeouts and errors
 // hat tip to Ricardo Tomasi for the timeout logic
 $.myJSONP = function(s,callName,n) {
