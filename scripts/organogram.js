@@ -1823,7 +1823,7 @@ var Orgvis = {
 		el.fullTimeEquivalent 						1 or 2
 		el.atGrade.prefLabel 						Grade B1/BAND B1
 		el.atGrade.payband.prefLabel 				B1/BAND B1 Payband
-		el.atGrade.payband.salaryRange.label[0]		�44,000 - �53,999
+		el.atGrade.payband.salaryRange.label[0]		£44,000 - £53,999
 		el.atGrade.payband.salaryRange.prefLabel	B1/BAND B1 Payband
 		el.withJob.prefLabel						Project Manager
 		el.withProfession.prefLabel					Operational Delivery
@@ -1873,7 +1873,7 @@ var Orgvis = {
 			  								
 					if(typeof el.atGrade.payband.salaryRange.label != 'undefined'){
 						salaryRangeLabel = el.atGrade.payband.salaryRange.label[0];
-			  			salaryRangeValue = salaryRangeLabel.replace(/�/g,'');
+			  			salaryRangeValue = salaryRangeLabel.replace(/£/g,'');
 			  			salaryRangeValue = salaryRangeValue.split(" - ");
 			  			salaryRangeValue = salaryRangeValue[0];
 			  			salaryRangeLabel = addCommas(salaryRangeLabel);
@@ -2101,7 +2101,7 @@ var Orgvis = {
 		el.fullTimeEquivalent 						1 or 2
 		el.atGrade.prefLabel 						Grade B1/BAND B1
 		el.atGrade.payband.prefLabel 				B1/BAND B1 Payband
-		el.atGrade.payband.salaryRange.label[0]		�44,000 - �53,999
+		el.atGrade.payband.salaryRange.label[0]		£44,000 - £53,999
 		el.atGrade.payband.salaryRange.prefLabel	B1/BAND B1 Payband
 		el.withJob.prefLabel						Project Manager
 		el.withProfession.prefLabel					Operational Delivery
