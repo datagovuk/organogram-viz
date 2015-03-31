@@ -351,7 +351,7 @@ var Orgvis = {
 						var pi=node.data.postIn;			
 						for(var a=pi.length;a--;){
 							if(pi[a]._about.indexOf("/unit/") > 0 && label.innerHTML.indexOf('childLoader') < 0){
-								label.innerHTML = label.innerHTML + '<span class="postIn ui-state-active">'+pi[a].label[0]+'</span><span class="childLoader"><img src="../images/childLoader.gif" /></span>';
+								label.innerHTML = label.innerHTML + '<span class="postIn ui-state-active">'+Orgvis.getLabel(pi[a].label[0])+'</span><span class="childLoader"><img src="../images/childLoader.gif" /></span>';
 							} else {}
 						}
 					} else {

@@ -1405,10 +1405,10 @@ var Orgvis = {
 				
 			for(var a=json.result.primaryTopic.postIn.length;a--;){
 				if(json.result.primaryTopic.postIn[a]._about.indexOf("/unit/") > 0){
-					$("h1.title button#unit").html(json.result.primaryTopic.postIn[a].label[0]);
+					$("h1.title button#unit").html(OrgVis.getLabel(json.result.primaryTopic.postIn[a].label[0]));
 					uSlug = Orgvis.getSlug(json.result.primaryTopic.postIn[a]._about);
 				} else {
-					$("h1.title button#dept").html(json.result.primaryTopic.postIn[a].label[0]);
+					$("h1.title button#dept").html(OrgVis.getLabel(json.result.primaryTopic.postIn[a].label[0]));
 					dSlug = Orgvis.getSlug(json.result.primaryTopic.postIn[a]._about);	
 					$("h1.title button#category").html("Departments");
 					dSlug = Orgvis.getSlug(json.result.primaryTopic.postIn[a]._about);
