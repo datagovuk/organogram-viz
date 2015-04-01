@@ -74,7 +74,7 @@ class API_cache {
 }
 
 function getVersions($versions, $deptUri, $pubbodyUri) {
-    $arrVersions = [];
+    $arrVersions = array();
 	foreach($versions as $version1 => $endpoint1) {
 		$api_cache = new API_cache (array("isInDB", $deptUri,$pubbodyUri, $endpoint1));
 		if ($api_cache->get_api_cache()) {
