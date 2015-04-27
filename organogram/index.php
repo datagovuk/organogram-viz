@@ -1,14 +1,14 @@
 <?php
 $versions = array(
     //sparql/organogram/query
-    '2014-09-30' => 'http://reference.data.gov.uk/sparql/organogram/query',
-    '2014-03-31' => 'http://reference.data.gov.uk/sparql/organogram/query',
-    '2013-09-30' => 'http://reference.data.gov.uk/sparql/organogram/query',
-    '2013-03-31' => 'http://reference.data.gov.uk/sparql/organogram/query',
-    '2012-09-30' => 'http://reference.data.gov.uk/sparql/organogram/query',
-    '2012-03-31' => 'http://reference.data.gov.uk/sparql/organogram/query',
-    '2011-09-30' => 'http://reference.data.gov.uk/sparql/organogram/query',
-    '2011-03-31' => 'http://reference.data.gov.uk/sparql/organogram/query');
+    '2014-09-30' => 'http://organogram.dguteam.org.uk/sparql/organogram/query',
+    '2014-03-31' => 'http://organogram.dguteam.org.uk/sparql/organogram/query',
+    '2013-09-30' => 'http://organogram.dguteam.org.uk/sparql/organogram/query',
+    '2013-03-31' => 'http://organogram.dguteam.org.uk/sparql/organogram/query',
+    '2012-09-30' => 'http://organogram.dguteam.org.uk/sparql/organogram/query',
+    '2012-03-31' => 'http://organogram.dguteam.org.uk/sparql/organogram/query',
+    '2011-09-30' => 'http://organogram.dguteam.org.uk/sparql/organogram/query',
+    '2011-03-31' => 'http://organogram.dguteam.org.uk/sparql/organogram/query');
 $thisPubbod = '';
 $thisDept = '';
 
