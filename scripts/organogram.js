@@ -118,7 +118,7 @@ var Orgvis = {
 		} else{
 			Orgvis.vars.global_post = postSlug;		
 		}
-        domain =  'reference2.data.gov.uk';
+        domain =  '46.43.41.16';
 
         // Check for preview parameter
 		if(pMode == "true"){
