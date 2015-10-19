@@ -159,7 +159,7 @@ WHERE {
   OPTIONAL {
       ?item org:reportsTo ?boss .
     }
-FILTER (?boss = <$thisDepartment/post/xx> )
+FILTER (!BOUND(?boss))
 
 }
 ORDER BY DESC(?item)
