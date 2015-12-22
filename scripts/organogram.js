@@ -2813,7 +2813,7 @@ var Orgvis = {
 			//range: 'min',
 			slide: function( event, ui ) {
 					$( "#versions" ).text(versionsList[ui.value].version_name) ;
-					window.location = 'http://'+window.location.host+'/'+window.location.pathname+'?'+Orgvis.vars.global_orgSlug+'='+Orgvis.vars.global_postOrg+"&version="+versionsList[ui.value].version_value;
+					window.location = 'http://'+window.location.host+window.location.pathname+'?'+Orgvis.vars.global_orgSlug+'='+Orgvis.vars.global_postOrg+"&version="+versionsList[ui.value].version_value;
 				}
 			});
 
