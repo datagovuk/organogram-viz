@@ -1,14 +1,25 @@
 <?php
 $versions = array(
     //sparql/organogram/query
-    '2014-09-30' => 'http://46.43.41.16/sparql/organogram/query',
-    '2014-03-31' => 'http://46.43.41.16/sparql/organogram/query',
+    // '2014-09-30' => 'http://46.43.41.16/sparql/organogram/query',
+    // '2014-03-31' => 'http://46.43.41.16/sparql/organogram/query',
     '2013-09-30' => 'http://46.43.41.16/sparql/organogram/query',
     '2013-03-31' => 'http://46.43.41.16/sparql/organogram/query',
     '2012-09-30' => 'http://46.43.41.16/sparql/organogram/query',
     '2012-03-31' => 'http://46.43.41.16/sparql/organogram/query',
     '2011-09-30' => 'http://46.43.41.16/sparql/organogram/query',
-    '2011-03-31' => 'http://46.43.41.16/sparql/organogram/query');
+    // '2011-03-31' => 'http://46.43.41.16/sparql/organogram/query'
+    );
+$versionSimple = array(
+	// '2014-09-30',
+	// '2014-03-31',
+	'2013-09-30',
+	'2013-03-31',
+	'2012-09-30',
+	'2012-03-31',
+	'2011-09-30',
+	// '2011-03-31'
+	);
 $thisPubbod = '';
 $thisDept = '';
 
@@ -32,6 +43,7 @@ $thisVersion = '';
 if (!empty($_GET['version']))
     $thisVersion = $_GET['version'];
 $arrVersions = getVersions($versions, $deptUri, $pubbodyUri);
+echo '<script>console.log('.json_encode($arrVersions).');</script>';
 if($thisVersion==''){
 	$thisVersion = $arrVersions[0]["version_value"];
 }
@@ -46,7 +58,8 @@ $deptURI = $deptUri;
 if($thisDept==""){
     $deptURI = $pubbodyUri;
 }
-$api_cache = new API_cache (array("getTopDog", $thisendPoint, $deptURI));
+echo '<script>console.log("This version: '.$thisVersion.'");</script>';
+$api_cache = new API_cache (array("getTopDog", $thisendPoint, $deptURI, $thisVersion));
 $top_dog = json_decode($api_cache->get_api_cache());
 
 if (count($top_dog->results->bindings) > 0) {
@@ -75,15 +88,15 @@ if (!empty($_GET['preview']))
 <script language="javascript" type="text/javascript">
 //<!--
 var strDateFolder = "<?php echo $thisVersion?>";
-var departmentList = 
+var departmentList =
 <?php echo json_encode($arrDepts);?>
 
 // reverse array to have latest version on right of slider
-var versionsList = 
+var versionsList =
 <?php echo json_encode(array_reverse($arrVersions));?>
 
 //-->
- 
+
 
 </script>
 
@@ -126,11 +139,11 @@ var versionsList =
 	<body class="IE7" onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $preview;?>');">
 <![endif]-->
 
-<!--[if IE 8]> 
+<!--[if IE 8]>
 	<body class="IE8" onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $preview;?>');">
 <![endif]-->
 
-<!--[if IE 9]> 
+<!--[if IE 9]>
 	<body class="IE9" onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $preview;?>');">
 <![endif]-->
 
@@ -265,7 +278,7 @@ var versionsList =
 div id="login">
 	<form>
 		<fieldset>
-			<legend>Login</legend>	
+			<legend>Login</legend>
 			<label for="username">Username</label>
 			<input type="text" name="username" id="username" class="text" maxlength="30" />
 			<label for="password">Password</label>

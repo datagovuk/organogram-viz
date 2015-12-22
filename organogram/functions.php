@@ -3,15 +3,15 @@
 /*
 * Caches API calls to a local file which is updated on a
 * given time interval.
-* 
+*
 * http://www.profilepicture.co.uk/caching-api-responses-php/
 */
 class API_cache {
-  
+
   private
       $_update_interval // how often to update
     , $_cache_file
-    , $_api_call_string    
+    , $_api_call_string
     , $_api_call; // API call (array, first is function name, others are params)
 
   public function __construct ($tw, $int = 240) {
@@ -33,13 +33,13 @@ class API_cache {
       $this->_update_cache();
     }
     $handle = fopen($this->_cache_file, "r");
-    
+
     $first = fgets($handle); // dont return first line ( contains api call string)
     $buffer = "";
 	while (!feof($handle)) {
-	    $buffer .= fgets($handle);	   
+	    $buffer .= fgets($handle);
 	}
-    
+
     return $buffer;
   }
 
@@ -73,6 +73,15 @@ class API_cache {
   }
 }
 
+/**
+ * Given an array of version dates and URLs, it returns an
+ * array of key-value objects with version dates in two formats
+ *
+ * @param  [type] $versions   array('2014-09-30' => 'http://46.43.41.16/sparql/organogram/query',...)
+ * @param  [type] $deptUri    [description]
+ * @param  [type] $pubbodyUri [description]
+ * @return [type]             array('version_name' => '30/09/2014', 'version_value => '2014-09-30'},...]
+ */
 function getVersions($versions, $deptUri, $pubbodyUri) {
     $arrVersions = array();
 	foreach($versions as $version1 => $endpoint1) {
@@ -142,7 +151,7 @@ function getDepartmentsJSON($versions) {
 	return $arrDepts;
 }
 
-function getTopDog($endpoint,$thisDepartment){
+function getTopDog($endpoint,$thisDepartment,$version){
 
 	$getTopDog = <<<GETTOPDOG
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -153,19 +162,25 @@ PREFIX org: <http://www.w3.org/ns/org#>
 SELECT DISTINCT ?item
 
 WHERE {
-  ?item gov:postIn <$thisDepartment> .
-  {?item postStatus:postStatus postStatus:current . } UNION 
-    { ?item postStatus:postStatus postStatus:vacant . }
-  OPTIONAL {
+  GRAPH <http://reference.data.gov.uk/organogram/graph/$version> {
+    ?item gov:postIn <$thisDepartment> .
+    {
+      ?item postStatus:postStatus postStatus:current .
+    }
+    UNION
+    {
+      ?item postStatus:postStatus postStatus:vacant .
+    }
+    OPTIONAL
+    {
       ?item org:reportsTo ?boss .
     }
-FILTER (!BOUND(?boss))
-
+    FILTER (!BOUND(?boss))
+  }
 }
 ORDER BY DESC(?item)
+LIMIT 100
 
-limit 1
-		  
 GETTOPDOG;
 
 	$result = query($endpoint, $getTopDog);
@@ -206,7 +221,13 @@ GETDEPT;
 
 }
 
-
+/**
+ * Checks to see if a department exists in the DB through its URI
+ * @param  [type]  $deptUri    [description]
+ * @param  [type]  $pubbodyUri [description]
+ * @param  [type]  $endpoint   [description]
+ * @return boolean             [description]
+ */
 function isInDB($deptUri,$pubbodyUri, $endpoint) {
 	$deptExists = <<<DEPTEXISTS
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -216,7 +237,7 @@ ASK
   {
 {<$deptUri> rdf:type org:Organization}
 	UNION
-	{<$pubbodyUri> rdf:type org:Organization}	
+	{<$pubbodyUri> rdf:type org:Organization}
 }
 
 DEPTEXISTS;
