@@ -1403,7 +1403,7 @@ var Orgvis = {
 			//Orgvis.vars.firstNode = makeNode(json.result.primaryTopic);
 
 			// Extract information for visualisation breadcrumbs
-			$("h1.title button#post").html(json.result.primaryTopic.label[0]);
+			$("h1.title button#post").html(Orgvis.getLabel(json.result.primaryTopic.label[0]));
 
 			var uSlug,dSlug;
 
@@ -1851,7 +1851,7 @@ var Orgvis = {
 			};
 
 		if(typeof el.label != 'undefined' && typeof el.label[0] != 'undefined'){
-			node.data.fullName = el.label[0];
+			node.data.fullName = Orgvis.getLabel(el.label[0]);
 		}
 
 		if(typeof el.atGrade != 'undefined'){
@@ -1929,7 +1929,7 @@ var Orgvis = {
 		}
 
 		if(typeof el.inUnit != 'undefined' && typeof el.inUnit.label != 'undefined' && typeof el.inUnit._about != 'undefined'){
-			node.data.unit.label = el.inUnit.label[0];
+			node.data.unit.label = Orgvis.getLabel(el.inUnit.label[0]);
 			node.data.unit.uri = el.inUnit._about;
 		} else {
 			node.data.unit.label = "Other";
@@ -1937,7 +1937,7 @@ var Orgvis = {
 		}
 
 		if(typeof el.reportingTo != 'undefined' && typeof el.reportingTo.label != 'undefined' && typeof el.reportingTo._about != 'undefined'){
-			node.data.reportingTo.label = el.reportingTo.label[0];
+			node.data.reportingTo.label = Orgvis.getLabel(el.reportingTo.label[0]);
 			node.data.reportingTo.uri = el.reportingTo._about;
 		}
 
@@ -2172,7 +2172,7 @@ var Orgvis = {
 				byUnit[uSlug].children.push(Orgvis.makeJuniorPostNode(items[i]));
 				byUnit[uSlug].data.fteTotal += items[i].fullTimeEquivalent;
 			} else {
-				byUnit[uSlug] = Orgvis.makeJuniorPostGroup(items[i].inUnit.label[0], "Unit");
+				byUnit[uSlug] = Orgvis.makeJuniorPostGroup(Orgvis.getLabel(items[i].inUnit.label[0]), "Unit");
 				byUnit[uSlug].children.push(Orgvis.makeJuniorPostNode(items[i]));
 				byUnit[uSlug].data.fteTotal = items[i].fullTimeEquivalent;
 			}
@@ -2386,7 +2386,7 @@ var Orgvis = {
 		for(var j=postIn.length;j--;){
 			if(postIn[j]._about.indexOf("/unit/") >= 0){
 				tempUnitID = Orgvis.getSlug(postIn[j]._about);
-				tempUnitLabel = postIn[j].label[0];
+				tempUnitLabel = Orgvis.getLabel(postIn[j].label[0]);
 				postUnit = postIn[j]._about;
 			}
 		}
