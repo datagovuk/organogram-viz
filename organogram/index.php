@@ -7,7 +7,7 @@ $versions = array(
     '2013-03-31' => 'http://46.43.41.16/sparql/organogram/query',
     '2012-09-30' => 'http://46.43.41.16/sparql/organogram/query',
     '2012-03-31' => 'http://46.43.41.16/sparql/organogram/query',
-    '2011-09-30' => 'http://46.43.41.16/sparql/organogram/query',
+    '2011-09-30' => 'http://46.43.41.16/sparql/organogram/query'
     // '2011-03-31' => 'http://46.43.41.16/sparql/organogram/query'
     );
 $versionSimple = array(
@@ -61,12 +61,15 @@ if($thisDept==""){
 echo '<script>console.log("This version: '.$thisVersion.'");</script>';
 $api_cache = new API_cache (array("getTopDog", $thisendPoint, $deptURI, $thisVersion));
 $top_dog = json_decode($api_cache->get_api_cache());
+// echo '<script>console.log("Top dog result", '.json_decode($top_dog).');</script>';
 
+// echo '<script>console.log('.count($top_dog->results->bindings).');</script>'
 if (count($top_dog->results->bindings) > 0) {
     $top_dog = $top_dog->results->bindings[0]->item->value;
     $startPos = strrpos($top_dog, "/");
     $thisPost = substr($top_dog, $startPos + 1);
 }
+echo '<script>console.log("Top dog: '.$top_dog.', startPos:'.$startPos.', thisPost: '.$thisPost.'");</script>';
 $preview = FALSE;
 if (!empty($_GET['preview']))
     $preview = $_GET['preview'];

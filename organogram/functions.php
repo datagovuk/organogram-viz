@@ -83,6 +83,8 @@ class API_cache {
  * @return [type]             array('version_name' => '30/09/2014', 'version_value => '2014-09-30'},...]
  */
 function getVersions($versions, $deptUri, $pubbodyUri) {
+  // echo '<script>console.log('.json_encode($versions).');</script>';
+  // echo '<script>console.log("'.$deptUri.' '.$pubbodyUri.'");</script>';
     $arrVersions = array();
 	foreach($versions as $version1 => $endpoint1) {
 		$api_cache = new API_cache (array("isInDB", $deptUri,$pubbodyUri, $endpoint1));
@@ -91,6 +93,7 @@ function getVersions($versions, $deptUri, $pubbodyUri) {
 			$arrVersions[] = array('version_name' => $arrDateArray[2].'/'.$arrDateArray[1].'/'.$arrDateArray[0],'version_value' => $version1);
 		}
 	}
+  // echo '<script>console.log('.json_encode($arrVersions).');</script>';
 	return $arrVersions;
 }
 
