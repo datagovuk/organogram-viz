@@ -1269,25 +1269,27 @@ var Orgvis = {
 			*/
 			Orgvis.buildPostList(Orgvis.vars.apiResponses["onDemand_"+postID].postReportsOnDemand,options);
 
-			/* Assign the newly generated postList (which contains
-			 * the root post that connects all other posts) as the
-			 * global_postJSON variable, so the data appears in the visualisation.
-			 */
-			Orgvis.vars.global_postJSON = Orgvis.connectPosts();
 
-			/* Connect the junior posts returned by the API to
-			 * the postList.
-			*/
-			Orgvis.connectJuniorPosts(Orgvis.vars.apiResponses["onDemand_"+postID].juniorStaffOnDemand);
+			setTimeout(function() {
+				/* Assign the newly generated postList (which contains
+				 * the root post that connects all other posts) as the
+				 * global_postJSON variable, so the data appears in the visualisation.
+				 */
+				Orgvis.vars.global_postJSON = Orgvis.connectPosts();
 
-			/* Set the childrenAdded flags and add the "No Junior
-			 * posts" node to the new children nodes.
-			 */
-			Orgvis.setChildrenAdded(Orgvis.vars.postList[postID]);
+				/* Connect the junior posts returned by the API to
+				 * the postList.
+				*/
+				Orgvis.connectJuniorPosts(Orgvis.vars.apiResponses["onDemand_"+postID].juniorStaffOnDemand);
 
-			log("adding onDemand subtree for "+postID);
+				/* Set the childrenAdded flags and add the "No Junior
+				 * posts" node to the new children nodes.
+				 */
+				Orgvis.setChildrenAdded(Orgvis.vars.postList[postID]);
 
-			Orgvis.onDemandAddNodes(node,postID,originalChildren);
+				log("adding onDemand subtree for "+postID);
+				Orgvis.onDemandAddNodes(node,postID,originalChildren);
+			}, 500);
 
 		}
 
@@ -1314,7 +1316,7 @@ var Orgvis = {
 	    			Orgvis.onDemandAfterCompute(node,postID,originalChildren);
 	    		}
 	    		Orgvis.vars.addSubtreeBusy = false;
-	    	},1000);
+	    	}, 500);
 
 
 
