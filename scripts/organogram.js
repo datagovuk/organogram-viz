@@ -65,7 +65,7 @@ var Orgvis = {
 		firstLoad_expectedApiResponses:4, // Used to make the app wait until the correct number of API responses have been gathered
 		apiResponses:[],		// Stores JSON responses from the API
 		cacheObj:{},			// An object to store API responses
-		debug:true,				// Output to console or not
+		debug:false,				// Output to console or not
 		fakeTop: {
 			"_about": "http:\/\/reference.data.gov.uk\/id\/department\/top\/post\/top",
 			"label": ["Top Post"],
@@ -728,9 +728,9 @@ var Orgvis = {
 			},
 			success: function(json){
 				console.log('successfully received top posts data');
-				$("div#" + "loading_top_post").trigger("jGrowl.close").remove();
+				$("div#loading_top_post").trigger("jGrowl.close").remove();
 
-				Orgvis.notify("Success","Loaded top post data",false,"success_post");
+				Orgvis.notify("Success","Loaded top post data",false,"success_top_post");
 
 				Orgvis.regData(json);
 			}
@@ -2731,7 +2731,6 @@ var Orgvis = {
 
 	},
 	notify:function(type,message,stick,id) {
-
 		$.jGrowl(message,{
 				header:type,
 				theme:type,
