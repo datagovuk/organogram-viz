@@ -1688,8 +1688,8 @@ var Orgvis = {
                 if(item.postIn[a]._about.indexOf("/unit/") > 0){
                     if(typeof Orgvis.vars.unitList[Orgvis.getSlug(item.postIn[a]._about)] == 'undefined'){
                         Orgvis.vars.unitList[Orgvis.getSlug(item.postIn[a]._about)] = {
-                            name:this.getValue(item.postIn[a].label),
-                            uri:item.postIn[a]._about,
+                            name: Orgvis.getLabel(item.postIn[a].label),
+                            uri: item.postIn[a]._about,
                             count:1
                         };
                     } else {
@@ -1788,7 +1788,7 @@ var Orgvis = {
 
                 // sometimes label is not present
                 try {
-                    node.data.salaryRange.push(item.salaryRange.label[0]);
+                    node.data.salaryRange.push(Orgvis.getLabel(item.salaryRange.label));
                 }
                 catch (err) {
 
@@ -1798,7 +1798,7 @@ var Orgvis = {
                 log(node.name+" has more than one salary range");
                 for(var i in item.salaryRange){
                     try {
-                        node.data.salaryRange.push(this.getValue(item.salaryRange[i].label));
+                        node.data.salaryRange.push(Orgvis.getLabel(item.salaryRange[i].label));
                     }
                     catch (err) {
 
@@ -1857,7 +1857,7 @@ var Orgvis = {
 		if(typeof el.atGrade != 'undefined'){
 
 			if(typeof el.atGrade.prefLabel != 'undefined'){
-				node.data.grade = el.atGrade.prefLabel;
+				node.data.grade = Orgvis.getLabel(el.atGrade.prefLabel);
 			} else{
 				node.data.grade = "Other";
 			}
@@ -1865,7 +1865,7 @@ var Orgvis = {
 			if(typeof el.atGrade.payband != 'undefined'){
 
 				if(typeof el.atGrade.payband.prefLabel != 'undefined'){
-					node.data.payband = el.atGrade.payband.prefLabel;
+					node.data.payband = Orgvis.getLabel(el.atGrade.payband.prefLabel);
 				} else {
 					node.data.payband = "No payband";
 				}
@@ -1875,7 +1875,7 @@ var Orgvis = {
 					var salaryRangeLabel, salaryRangeValue;
 
 					if(typeof el.atGrade.payband.salaryRange.label != 'undefined'){
-						salaryRangeLabel = el.atGrade.payband.salaryRange.label[0];
+						salaryRangeLabel = Orgvis.getLabel(el.atGrade.payband.salaryRange.label);
 			  			salaryRangeValue = salaryRangeLabel.replace(/£/g,'');
 			  			salaryRangeValue = salaryRangeValue.split(" - ");
 			  			salaryRangeValue = salaryRangeValue[0];
@@ -1907,11 +1907,11 @@ var Orgvis = {
 
 		if(typeof el.withJob != 'undefined'){
 			if(typeof el.withJob.prefLabel != 'string'){
-				node.name = el.withJob.prefLabel[0];
-				node.data.job = el.withJob.prefLabel[0];
+				node.name = Orgvis.getLabel(el.withJob.prefLabel);
+				node.data.job = Orgvis.getLabel(el.withJob.prefLabel);
 			} else {
-				node.name = el.withJob.prefLabel;
-				node.data.job = el.withJob.prefLabel;
+				node.name = Orgvis.getLabel(el.withJob.prefLabel);
+				node.data.job = Orgvis.getLabel(el.withJob.prefLabel);
 			}
 		} else {
 			node.name = "Job not disclosed";
@@ -1920,16 +1920,16 @@ var Orgvis = {
 
 		if(typeof el.withProfession != 'undefined'){
 			if(typeof el.withProfession.prefLabel != 'string'){
-				node.data.profession = el.withProfession.prefLabel[0];
+				node.data.profession = Orgvis.getLabel(el.withProfession.prefLabel);
 			} else {
-				node.data.profession = el.withProfession.prefLabel;
+				node.data.profession = Orgvis.getLabel(el.withProfession.prefLabel);
 			}
 		} else {
 			node.data.profession = "Other"
 		}
 
 		if(typeof el.inUnit != 'undefined' && typeof el.inUnit.label != 'undefined' && typeof el.inUnit._about != 'undefined'){
-			node.data.unit.label = Orgvis.getLabel(el.inUnit.label[0]);
+			node.data.unit.label = Orgvis.getLabel(el.inUnit.label);
 			node.data.unit.uri = el.inUnit._about;
 		} else {
 			node.data.unit.label = "Other";
@@ -1937,7 +1937,7 @@ var Orgvis = {
 		}
 
 		if(typeof el.reportingTo != 'undefined' && typeof el.reportingTo.label != 'undefined' && typeof el.reportingTo._about != 'undefined'){
-			node.data.reportingTo.label = Orgvis.getLabel(el.reportingTo.label[0]);
+			node.data.reportingTo.label = Orgvis.getLabel(el.reportingTo.label);
 			node.data.reportingTo.uri = el.reportingTo._about;
 		}
 
@@ -1998,7 +1998,7 @@ var Orgvis = {
 		};
 
 		if(typeof groupName != 'string'){
-			node.name = groupName[0];
+			node.name = Orgvis.getLabel(groupName);
 		}
 
 		if(Orgvis.vars.jpColourCounter == Orgvis.vars.colours.length-1){
@@ -2156,7 +2156,7 @@ var Orgvis = {
 
 			  	if(typeof items[i].atGrade.payband != 'undefined' && typeof items[i].atGrade.payband.salaryRange != 'undefined'){
 					if(typeof items[i].atGrade.payband.salaryRange.label != 'undefined'){
-			  		salaryRange = addCommas(items[i].atGrade.payband.salaryRange.label[0]);
+			  		salaryRange = addCommas(Orgvis.getLabel(items[i].atGrade.payband.salaryRange.label));
 					}else{
 					salaryRange = "Salary Not Available";
 					}
@@ -2386,7 +2386,7 @@ var Orgvis = {
 		for(var j=postIn.length;j--;){
 			if(postIn[j]._about.indexOf("/unit/") >= 0){
 				tempUnitID = Orgvis.getSlug(postIn[j]._about);
-				tempUnitLabel = Orgvis.getLabel(postIn[j].label[0]);
+				tempUnitLabel = Orgvis.getLabel(postIn[j].label);
 				postUnit = postIn[j]._about;
 			}
 		}

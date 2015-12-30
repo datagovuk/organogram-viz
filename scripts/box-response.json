@@ -1,0 +1,724 @@
+{
+  "format": "linked-data-api",
+  "version": "0.2",
+  "result": {
+    "_about": "http://46.43.41.16/doc/department/co/post/IO1/immediate-junior-staff.json?_graph=http://reference.data.gov.uk/organogram/graph/2011-09-30&_pageSize=20&callback=jQuery161015498629159670296_1451480969255",
+    "definition": "http://46.43.41.16/meta/doc/_deptOrBody/_code/post/_post/immediate-junior-staff.json?callback=jQuery161015498629159670296_1451480969255&_graph=http://reference.data.gov.uk/organogram/graph/2011-09-30",
+    "extendedMetadataVersion": "http://46.43.41.16/doc/department/co/post/IO1/immediate-junior-staff.json?callback=jQuery161015498629159670296_1451480969255&_metadata=all&_pageSize=20&_graph=http://reference.data.gov.uk/organogram/graph/2011-09-30",
+    "first": "http://46.43.41.16/doc/department/co/post/IO1/immediate-junior-staff.json?callback=jQuery161015498629159670296_1451480969255&_pageSize=20&_page=0&_graph=http://reference.data.gov.uk/organogram/graph/2011-09-30",
+    "isPartOf": {
+      "_about": "http://46.43.41.16/doc/department/co/post/IO1/immediate-junior-staff.json?callback=jQuery161015498629159670296_1451480969255&_graph=http://reference.data.gov.uk/organogram/graph/2011-09-30",
+      "definition": "http://46.43.41.16/meta/doc/_deptOrBody/_code/post/_post/immediate-junior-staff.json?callback=jQuery161015498629159670296_1451480969255&_graph=http://reference.data.gov.uk/organogram/graph/2011-09-30",
+      "hasPart": "http://46.43.41.16/doc/department/co/post/IO1/immediate-junior-staff.json?_graph=http://reference.data.gov.uk/organogram/graph/2011-09-30&_pageSize=20&callback=jQuery161015498629159670296_1451480969255",
+      "type": [
+        "http://purl.org/linked-data/api/vocab#ListEndpoint"
+      ]
+    },
+    "items": [
+      {
+        "_about": "http://organogram.data.gov.uk/data/cabinet-office/2011-09-30/Independent-Office-staff-and-salary-data-FINAL-TEMPLATE#juniorPosts2",
+        "atGrade": {
+          "_about": "http://reference.data.gov.uk/def/department/co/grade/b2band-b2",
+          "payband": {
+            "_about": "http://reference.data.gov.uk/def/department/co/payband/b2band-b2",
+            "prefLabel": [
+              {
+                "_value": "B2/BAND B2 Payband"
+              }
+            ],
+            "salaryRange": [
+              {
+                "_about": "http://reference.data.gov.uk/id/salary-range/29819-38103",
+                "label": [
+                  {
+                    "_value": "£29819 - £38103"
+                  }
+                ]
+              }
+            ]
+          },
+          "prefLabel": [
+            {
+              "_value": "B2/BAND B2"
+            }
+          ]
+        },
+        "date": {
+          "_about": "http://reference.data.gov.uk/id/day/2011-09-30",
+          "label": [
+            {
+              "_value": "2011-09-30"
+            }
+          ]
+        },
+        "fullTimeEquivalent": 1,
+        "inUnit": {
+          "_about": "http://reference.data.gov.uk/id/department/co/unit/independent-offices",
+          "label": [
+            {
+              "_value": "Independent Offices"
+            }
+          ]
+        },
+        "label": [
+          {
+            "_value": "B2/BAND B2 Business manager (Operational delivery) in INDEPENDENT OFFICES reporting to post IO1 FTE at 30/09/2011"
+          }
+        ],
+        "reportingTo": {
+          "_about": "http://reference.data.gov.uk/id/department/co/post/IO1",
+          "label": [
+            {
+              "_value": "Head of Independent Offices"
+            }
+          ]
+        },
+        "withJob": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-job/business-manager",
+          "prefLabel": [
+            {
+              "_value": "Business Manager"
+            },
+            {
+              "_value": "Business Manager",
+              "_lang": "en"
+            },
+            {
+              "_value": "Business manager"
+            }
+          ]
+        },
+        "withProfession": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-profession/operational-delivery",
+          "prefLabel": [
+            {
+              "_value": "Operational Delivery"
+            },
+            {
+              "_value": "Operational Delivery",
+              "_lang": "en"
+            },
+            {
+              "_value": "Operational delivery"
+            }
+          ]
+        }
+      },
+      {
+        "_about": "http://organogram.data.gov.uk/data/cabinet-office/2011-09-30/Independent-Office-staff-and-salary-data-FINAL-TEMPLATE#juniorPosts3",
+        "atGrade": {
+          "_about": "http://reference.data.gov.uk/def/department/co/grade/cband-c",
+          "payband": {
+            "_about": "http://reference.data.gov.uk/def/department/co/payband/cband-c",
+            "prefLabel": [
+              {
+                "_value": "C/BAND C Payband"
+              }
+            ],
+            "salaryRange": [
+              {
+                "_about": "http://reference.data.gov.uk/id/salary-range/19594-24188",
+                "label": [
+                  {
+                    "_value": "£19594 - £24188"
+                  }
+                ]
+              }
+            ]
+          },
+          "prefLabel": [
+            {
+              "_value": "C/BAND C"
+            }
+          ]
+        },
+        "date": {
+          "_about": "http://reference.data.gov.uk/id/day/2011-09-30",
+          "label": [
+            {
+              "_value": "2011-09-30"
+            }
+          ]
+        },
+        "fullTimeEquivalent": 1,
+        "inUnit": {
+          "_about": "http://reference.data.gov.uk/id/department/co/unit/independent-offices",
+          "label": [
+            {
+              "_value": "Independent Offices"
+            }
+          ]
+        },
+        "label": [
+          {
+            "_value": "C/BAND C Correspondence manager (policy) in INDEPENDENT OFFICES reporting to post IO1 FTE at 30/09/2011"
+          }
+        ],
+        "reportingTo": {
+          "_about": "http://reference.data.gov.uk/id/department/co/post/IO1",
+          "label": [
+            {
+              "_value": "Head of Independent Offices"
+            }
+          ]
+        },
+        "withJob": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-job/correspondence-manager",
+          "prefLabel": [
+            {
+              "_value": "Correspondence Manager"
+            },
+            {
+              "_value": "Correspondence Manager",
+              "_lang": "en"
+            },
+            {
+              "_value": "Correspondence manager"
+            }
+          ]
+        },
+        "withProfession": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-profession/policy",
+          "prefLabel": [
+            {
+              "_value": "Policy"
+            },
+            {
+              "_value": "Policy",
+              "_lang": "en"
+            },
+            {
+              "_value": "policy"
+            }
+          ]
+        }
+      },
+      {
+        "_about": "http://organogram.data.gov.uk/data/cabinet-office/2011-09-30/Independent-Office-staff-and-salary-data-FINAL-TEMPLATE#juniorPosts4",
+        "atGrade": {
+          "_about": "http://reference.data.gov.uk/def/department/co/grade/b1band-b1",
+          "payband": {
+            "_about": "http://reference.data.gov.uk/def/department/co/payband/b1band-b1",
+            "prefLabel": [
+              {
+                "_value": "B1/BAND B1 Payband"
+              }
+            ],
+            "salaryRange": [
+              {
+                "_about": "http://reference.data.gov.uk/id/salary-range/23557-29795",
+                "label": [
+                  {
+                    "_value": "£23557 - £29795"
+                  }
+                ]
+              }
+            ]
+          },
+          "prefLabel": [
+            {
+              "_value": "B1/BAND B1"
+            }
+          ]
+        },
+        "date": {
+          "_about": "http://reference.data.gov.uk/id/day/2011-09-30",
+          "label": [
+            {
+              "_value": "2011-09-30"
+            }
+          ]
+        },
+        "fullTimeEquivalent": 1,
+        "inUnit": {
+          "_about": "http://reference.data.gov.uk/id/department/co/unit/independent-offices",
+          "label": [
+            {
+              "_value": "Independent Offices"
+            }
+          ]
+        },
+        "label": [
+          {
+            "_value": "B1/BAND B1 Executive Assistant (Policy) in INDEPENDENT OFFICES reporting to post IO1 FTE at 30/09/2011"
+          }
+        ],
+        "reportingTo": {
+          "_about": "http://reference.data.gov.uk/id/department/co/post/IO1",
+          "label": [
+            {
+              "_value": "Head of Independent Offices"
+            }
+          ]
+        },
+        "withJob": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-job/executive-assistant",
+          "prefLabel": [
+            {
+              "_value": "Executive Assistant"
+            },
+            {
+              "_value": "Executive Assistant",
+              "_lang": "en"
+            }
+          ]
+        },
+        "withProfession": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-profession/policy",
+          "prefLabel": [
+            {
+              "_value": "Policy"
+            },
+            {
+              "_value": "Policy",
+              "_lang": "en"
+            },
+            {
+              "_value": "policy"
+            }
+          ]
+        }
+      },
+      {
+        "_about": "http://organogram.data.gov.uk/data/cabinet-office/2011-09-30/Independent-Office-staff-and-salary-data-FINAL-TEMPLATE#juniorPosts5",
+        "atGrade": {
+          "_about": "http://reference.data.gov.uk/def/department/co/grade/cband-c",
+          "payband": {
+            "_about": "http://reference.data.gov.uk/def/department/co/payband/cband-c",
+            "prefLabel": [
+              {
+                "_value": "C/BAND C Payband"
+              }
+            ],
+            "salaryRange": [
+              {
+                "_about": "http://reference.data.gov.uk/id/salary-range/19594-24188",
+                "label": [
+                  {
+                    "_value": "£19594 - £24188"
+                  }
+                ]
+              }
+            ]
+          },
+          "prefLabel": [
+            {
+              "_value": "C/BAND C"
+            }
+          ]
+        },
+        "date": {
+          "_about": "http://reference.data.gov.uk/id/day/2011-09-30",
+          "label": [
+            {
+              "_value": "2011-09-30"
+            }
+          ]
+        },
+        "fullTimeEquivalent": 0.56,
+        "inUnit": {
+          "_about": "http://reference.data.gov.uk/id/department/co/unit/independent-offices",
+          "label": [
+            {
+              "_value": "Independent Offices"
+            }
+          ]
+        },
+        "label": [
+          {
+            "_value": "C/BAND C Finance Support Officer (Finance) in INDEPENDENT OFFICES reporting to post IO1 FTE at 30/09/2011"
+          }
+        ],
+        "reportingTo": {
+          "_about": "http://reference.data.gov.uk/id/department/co/post/IO1",
+          "label": [
+            {
+              "_value": "Head of Independent Offices"
+            }
+          ]
+        },
+        "withJob": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-job/finance-support-officer",
+          "prefLabel": [
+            {
+              "_value": "Finance Support Officer"
+            },
+            {
+              "_value": "Finance Support Officer",
+              "_lang": "en"
+            }
+          ]
+        },
+        "withProfession": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-profession/finance",
+          "prefLabel": [
+            {
+              "_value": "Finance"
+            },
+            {
+              "_value": "Finance",
+              "_lang": "en"
+            }
+          ]
+        }
+      },
+      {
+        "_about": "http://organogram.data.gov.uk/data/cabinet-office/2011-09-30/Independent-Office-staff-and-salary-data-FINAL-TEMPLATE#juniorPosts6",
+        "atGrade": {
+          "_about": "http://reference.data.gov.uk/def/department/co/grade/b1band-b1",
+          "payband": {
+            "_about": "http://reference.data.gov.uk/def/department/co/payband/b1band-b1",
+            "prefLabel": [
+              {
+                "_value": "B1/BAND B1 Payband"
+              }
+            ],
+            "salaryRange": [
+              {
+                "_about": "http://reference.data.gov.uk/id/salary-range/23557-29795",
+                "label": [
+                  {
+                    "_value": "£23557 - £29795"
+                  }
+                ]
+              }
+            ]
+          },
+          "prefLabel": [
+            {
+              "_value": "B1/BAND B1"
+            }
+          ]
+        },
+        "date": {
+          "_about": "http://reference.data.gov.uk/id/day/2011-09-30",
+          "label": [
+            {
+              "_value": "2011-09-30"
+            }
+          ]
+        },
+        "fullTimeEquivalent": 1,
+        "inUnit": {
+          "_about": "http://reference.data.gov.uk/id/department/co/unit/independent-offices",
+          "label": [
+            {
+              "_value": "Independent Offices"
+            }
+          ]
+        },
+        "label": [
+          {
+            "_value": "B1/BAND B1 Office Manager (Policy) in INDEPENDENT OFFICES reporting to post IO1 FTE at 30/09/2011"
+          }
+        ],
+        "reportingTo": {
+          "_about": "http://reference.data.gov.uk/id/department/co/post/IO1",
+          "label": [
+            {
+              "_value": "Head of Independent Offices"
+            }
+          ]
+        },
+        "withJob": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-job/office-manager",
+          "prefLabel": [
+            {
+              "_value": "Office Manager"
+            },
+            {
+              "_value": "Office Manager",
+              "_lang": "en"
+            }
+          ]
+        },
+        "withProfession": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-profession/policy",
+          "prefLabel": [
+            {
+              "_value": "Policy"
+            },
+            {
+              "_value": "Policy",
+              "_lang": "en"
+            },
+            {
+              "_value": "policy"
+            }
+          ]
+        }
+      },
+      {
+        "_about": "http://organogram.data.gov.uk/data/cabinet-office/2011-09-30/Independent-Office-staff-and-salary-data-FINAL-TEMPLATE#juniorPosts7",
+        "atGrade": {
+          "_about": "http://reference.data.gov.uk/def/department/co/grade/b2band-b2",
+          "payband": {
+            "_about": "http://reference.data.gov.uk/def/department/co/payband/b2band-b2",
+            "prefLabel": [
+              {
+                "_value": "B2/BAND B2 Payband"
+              }
+            ],
+            "salaryRange": [
+              {
+                "_about": "http://reference.data.gov.uk/id/salary-range/29819-38103",
+                "label": [
+                  {
+                    "_value": "£29819 - £38103"
+                  }
+                ]
+              }
+            ]
+          },
+          "prefLabel": [
+            {
+              "_value": "B2/BAND B2"
+            }
+          ]
+        },
+        "date": {
+          "_about": "http://reference.data.gov.uk/id/day/2011-09-30",
+          "label": [
+            {
+              "_value": "2011-09-30"
+            }
+          ]
+        },
+        "fullTimeEquivalent": 5,
+        "inUnit": {
+          "_about": "http://reference.data.gov.uk/id/department/co/unit/independent-offices",
+          "label": [
+            {
+              "_value": "Independent Offices"
+            }
+          ]
+        },
+        "label": [
+          {
+            "_value": "B2/BAND B2 Policy Adviser (Policy) in INDEPENDENT OFFICES reporting to post IO1 FTE at 30/09/2011"
+          }
+        ],
+        "reportingTo": {
+          "_about": "http://reference.data.gov.uk/id/department/co/post/IO1",
+          "label": [
+            {
+              "_value": "Head of Independent Offices"
+            }
+          ]
+        },
+        "withJob": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-job/policy-adviser",
+          "prefLabel": [
+            {
+              "_value": "Policy Adviser"
+            },
+            {
+              "_value": "Policy Adviser",
+              "_lang": "en"
+            },
+            {
+              "_value": "Policy adviser"
+            }
+          ]
+        },
+        "withProfession": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-profession/policy",
+          "prefLabel": [
+            {
+              "_value": "Policy"
+            },
+            {
+              "_value": "Policy",
+              "_lang": "en"
+            },
+            {
+              "_value": "policy"
+            }
+          ]
+        }
+      },
+      {
+        "_about": "http://organogram.data.gov.uk/data/cabinet-office/2011-09-30/Independent-Office-staff-and-salary-data-FINAL-TEMPLATE#juniorPosts8",
+        "atGrade": {
+          "_about": "http://reference.data.gov.uk/def/department/co/grade/b1band-b1",
+          "payband": {
+            "_about": "http://reference.data.gov.uk/def/department/co/payband/b1band-b1",
+            "prefLabel": [
+              {
+                "_value": "B1/BAND B1 Payband"
+              }
+            ],
+            "salaryRange": [
+              {
+                "_about": "http://reference.data.gov.uk/id/salary-range/23557-29795",
+                "label": [
+                  {
+                    "_value": "£23557 - £29795"
+                  }
+                ]
+              }
+            ]
+          },
+          "prefLabel": [
+            {
+              "_value": "B1/BAND B1"
+            }
+          ]
+        },
+        "date": {
+          "_about": "http://reference.data.gov.uk/id/day/2011-09-30",
+          "label": [
+            {
+              "_value": "2011-09-30"
+            }
+          ]
+        },
+        "fullTimeEquivalent": 2.69,
+        "inUnit": {
+          "_about": "http://reference.data.gov.uk/id/department/co/unit/independent-offices",
+          "label": [
+            {
+              "_value": "Independent Offices"
+            }
+          ]
+        },
+        "label": [
+          {
+            "_value": "B1/BAND B1 Policy Support Officer (Policy) in INDEPENDENT OFFICES reporting to post IO1 FTE at 30/09/2011"
+          }
+        ],
+        "reportingTo": {
+          "_about": "http://reference.data.gov.uk/id/department/co/post/IO1",
+          "label": [
+            {
+              "_value": "Head of Independent Offices"
+            }
+          ]
+        },
+        "withJob": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-job/policy-support-officer",
+          "prefLabel": [
+            {
+              "_value": "Policy Support Officer"
+            },
+            {
+              "_value": "Policy Support Officer",
+              "_lang": "en"
+            }
+          ]
+        },
+        "withProfession": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-profession/policy",
+          "prefLabel": [
+            {
+              "_value": "Policy"
+            },
+            {
+              "_value": "Policy",
+              "_lang": "en"
+            },
+            {
+              "_value": "policy"
+            }
+          ]
+        }
+      },
+      {
+        "_about": "http://organogram.data.gov.uk/data/cabinet-office/2011-09-30/Independent-Office-staff-and-salary-data-FINAL-TEMPLATE#juniorPosts9",
+        "atGrade": {
+          "_about": "http://reference.data.gov.uk/def/department/co/grade/aband-a",
+          "payband": {
+            "_about": "http://reference.data.gov.uk/def/department/co/payband/aband-a",
+            "prefLabel": [
+              {
+                "_value": "A/BAND A Payband"
+              }
+            ],
+            "salaryRange": [
+              {
+                "_about": "http://reference.data.gov.uk/id/salary-range/44300-59885",
+                "label": [
+                  {
+                    "_value": "£44300 - £59885"
+                  }
+                ]
+              }
+            ]
+          },
+          "prefLabel": [
+            {
+              "_value": "A/BAND A"
+            }
+          ]
+        },
+        "date": {
+          "_about": "http://reference.data.gov.uk/id/day/2011-09-30",
+          "label": [
+            {
+              "_value": "2011-09-30"
+            }
+          ]
+        },
+        "fullTimeEquivalent": 4,
+        "inUnit": {
+          "_about": "http://reference.data.gov.uk/id/department/co/unit/independent-offices",
+          "label": [
+            {
+              "_value": "Independent Offices"
+            }
+          ]
+        },
+        "label": [
+          {
+            "_value": "A/BAND A Senior Policy Adviser (Policy) in INDEPENDENT OFFICES reporting to post IO1 FTE at 30/09/2011"
+          }
+        ],
+        "reportingTo": {
+          "_about": "http://reference.data.gov.uk/id/department/co/post/IO1",
+          "label": [
+            {
+              "_value": "Head of Independent Offices"
+            }
+          ]
+        },
+        "withJob": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-job/senior-policy-adviser",
+          "prefLabel": [
+            {
+              "_value": "Senior Policy Adviser"
+            },
+            {
+              "_value": "Senior Policy Adviser",
+              "_lang": "en"
+            },
+            {
+              "_value": "Senior policy adviser"
+            }
+          ]
+        },
+        "withProfession": {
+          "_about": "http://reference.data.gov.uk/def/civil-service-profession/policy",
+          "prefLabel": [
+            {
+              "_value": "Policy"
+            },
+            {
+              "_value": "Policy",
+              "_lang": "en"
+            },
+            {
+              "_value": "policy"
+            }
+          ]
+        }
+      }
+    ],
+    "itemsPerPage": 20,
+    "page": 0,
+    "startIndex": 1,
+    "totalResults": 8,
+    "type": [
+      "http://purl.org/linked-data/api/vocab#Page"
+    ]
+  }
+}
