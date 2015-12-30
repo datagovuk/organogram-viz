@@ -695,7 +695,6 @@ var Orgvis = {
 			Orgvis.getPostReportsData();
 			Orgvis.getJuniorStaffData();
 		} else if(!reload){
-			console.log('Normal load');
 			//Orgvis.notify("Loading","Calling API...",true,"loading_data");
 			Orgvis.getTopPostsData();
 			Orgvis.getRootPostData();
@@ -727,7 +726,6 @@ var Orgvis = {
 				Orgvis.notify("Error","Could not retrieve the top post's data",true,"error_top_post");
 			},
 			success: function(json){
-				console.log('successfully received top posts data');
 				$("div#loading_top_post").trigger("jGrowl.close").remove();
 
 				Orgvis.notify("Success","Loaded top post data",false,"success_top_post");
@@ -774,7 +772,6 @@ var Orgvis = {
 					$.cookie("organogram-preview-mode", true);
 					Orgvis.vars.previewMode = true;
 				}
-				console.log('getRootPostData', json);
 				if(json.result.primaryTopic.label !== undefined){
 					Orgvis.notify("Success","Loaded data for \""+Orgvis.getLabel(json.result.primaryTopic.label[0])+"\"",false,"success_post");
 					// Display the breadcrumbs at the top of the vis
@@ -1376,7 +1373,6 @@ var Orgvis = {
 					if(Orgvis.vars.apiResponses[i].result._about.indexOf("reports-full") > 0){
 						//log("found reports-full data");
 						//if(Orgvis.vars.apiResponses[i].result.items.length > 0){
-						console.log('loading organogram');
 							Orgvis.loadOrganogram(Orgvis.vars.apiResponses[i]);
 						//} else {
 						//	Orgvis.notify("Error","No reporting posts could be found.",true,"no_reporting_posts");
