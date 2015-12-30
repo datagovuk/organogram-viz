@@ -321,7 +321,7 @@ var Orgvis = {
 			onCreateLabel: function(label, node){
 
 				// If the clicked node is a node and not a junior post
-				if(typeof node.data != 'undefined' && node.data.type != 'junior_posts') {
+				if(node.data !== undefined && node.data.type != 'junior_posts') {
 
 					// Change the opacity if the node is not fully loaded
 
@@ -335,7 +335,7 @@ var Orgvis = {
 					label.id = node.id;
 					label.innerHTML = node.name;
 
-					if(typeof node.data.grade != 'undefined'){
+					if(node.data.grade !== undefined){
 						$(label).addClass(node.data.grade);
 					}
 
@@ -347,7 +347,7 @@ var Orgvis = {
 						$(label).addClass("post_"+Orgvis.getSlug(node.data.uri));
 					}
 
-					if(typeof node.data.postIn != 'undefined' && node.data.postIn.length > 0){
+					if(node.data.postIn !== undefined && node.data.postIn.length > 0){
 						var pi=node.data.postIn;
 						for(var a=pi.length;a--;){
 							if(pi[a]._about.indexOf("/unit/") > 0 && label.innerHTML.indexOf('childLoader') < 0){
@@ -775,7 +775,7 @@ var Orgvis = {
 					Orgvis.vars.previewMode = true;
 				}
 				console.log('getRootPostData', json);
-				if(typeof json.result.primaryTopic.label != 'undefined'){
+				if(json.result.primaryTopic.label !== undefined){
 					Orgvis.notify("Success","Loaded data for \""+Orgvis.getLabel(json.result.primaryTopic.label[0])+"\"",false,"success_post");
 					// Display the breadcrumbs at the top of the vis
 					Orgvis.loadRootPost(json);
@@ -826,14 +826,14 @@ var Orgvis = {
 				success: function(json){
 
 					// Store results
-					if(typeof combinedJSON.result == 'undefined'){
+					if(combinedJSON.result === undefined){
 						combinedJSON = json;
 					} else {
 						combinedJSON.result.items = combinedJSON.result.items.concat(json.result.items);
 					}
 
 					// Grab more pages
-					if(typeof json.result.next != 'undefined'){
+					if(json.result.next !== undefined){
 
 						//log("Reporting posts ("+pageNumber+") - more pages...");
 						//log(this);
@@ -914,14 +914,14 @@ var Orgvis = {
 
 				//log("Junior staff success function, "+pageNumber);
 				// Store results
-				if(typeof combinedJSON.result == 'undefined'){
+				if(combinedJSON.result === undefined){
 					combinedJSON = json;
 				} else {
 					combinedJSON.result.items = combinedJSON.result.items.concat(json.result.items);
 				}
 
 				// Grab more pages
-				if(typeof json.result.next != 'undefined'){
+				if(json.result.next !== undefined){
 
 					//log("Junior staff ("+pageNumber+") - more pages...");
 					pageNumber++;
@@ -1004,7 +1004,7 @@ var Orgvis = {
 				};
 				node.data.stats.date.formatted = '['+Orgvis.getSlug(node.data.stats.date.value)+']';
 
-	            if(typeof node.data.stats.salaryCostOfReports.value != 'undefined') {
+	            if(node.data.stats.salaryCostOfReports.value !== undefined) {
 	            	node.data.stats.salaryCostOfReports.formatted = '&#163;'+addCommas(node.data.stats.salaryCostOfReports.value);
 	            } else {
 	            	node.data.stats.salaryCostOfReports.value = 'N/A';
@@ -1067,14 +1067,14 @@ var Orgvis = {
 				success: function(json){
 
 					// Store results
-					if(typeof combinedJSON.result == 'undefined'){
+					if(combinedJSON.result === undefined){
 						combinedJSON = json;
 					} else {
 						combinedJSON.result.items = combinedJSON.result.items.concat(json.result.items);
 					}
 
 					// Grab more pages
-					if(typeof json.result.next != 'undefined'){
+					if(json.result.next !== undefined){
 
 						//log("Reporting posts on demand ("+pageNumber+") - more pages...");
 						//log(this);
@@ -1162,14 +1162,14 @@ var Orgvis = {
 				success: function(json){
 
 					// Store results
-					if(typeof combinedJSON.result == 'undefined'){
+					if(combinedJSON.result === undefined){
 						combinedJSON = json;
 					} else {
 						combinedJSON.result.items = combinedJSON.result.items.concat(json.result.items);
 					}
 
 					// Grab more pages
-					if(typeof json.result.next != 'undefined'){
+					if(json.result.next !== undefined){
 
 						//log("Junior staff on demand ("+pageNumber+") - more pages...");
 						//log(this);
@@ -1224,7 +1224,7 @@ var Orgvis = {
 		var originalChildren = Orgvis.vars.postList[postID].children.length;
 		//log("originalChildren: "+originalChildren);
 
-		if(typeof Orgvis.vars.apiResponses["onDemand_"+postID] == 'undefined'){
+		if(Orgvis.vars.apiResponses["onDemand_"+postID] === undefined){
 			// First on-demand call recieved out of two
 			if(json.result._about.indexOf("junior-staff") > 0) {
 				// junior staff data receieved
@@ -1396,7 +1396,7 @@ var Orgvis = {
 		$("#infovis-label").html("");
 		$("#infobox").hide();
 
-		if(typeof json.result.primaryTopic._about != 'undefined' && typeof json.result.primaryTopic.postIn != 'undefined' && typeof json.result.primaryTopic._about != 'undefined') {
+		if(json.result.primaryTopic._about !== undefined && json.result.primaryTopic.postIn !== undefined && json.result.primaryTopic._about !== undefined) {
 
 			Orgvis.vars.postInQuestion = json.result.primaryTopic;
 
@@ -1461,7 +1461,7 @@ var Orgvis = {
 			if(tempPostEl.reportsTo && tempPostEl.reportsTo[0] != tlPostReportsTo) {
 				for(var a=tempPostEl.reportsTo.length;a--;){
 					//log(tempPostEl);
-					if(typeof tempPostEl.reportsTo[a]._about != 'undefined'){
+					if(tempPostEl.reportsTo[a]._about !== undefined){
 						//log("piqrtSlug _about = "+tempPostEl.reportsTo[a]._about);
 						piqrtSlug = Orgvis.getSlug(tempPostEl.reportsTo[a]._about);
 					} else {
@@ -1470,7 +1470,7 @@ var Orgvis = {
 					}
 					Orgvis.vars.postInQuestionReportsTo.push(piqrtSlug);
 
-					if(typeof tempPostEl.reportsTo[a].reportsTo != 'undefined'){
+					if(tempPostEl.reportsTo[a].reportsTo !== undefined){
 						tempPostEl = tempPostEl.reportsTo[a];
 						a=a+1;
 					} else {
@@ -1527,12 +1527,12 @@ var Orgvis = {
 		// append fake top to end of array
 		//json.result.items[json.result.items.length] = Orgvis.vars.fakeTop;
 
-		if(typeof _piq.reportsTo != 'undefined') {
+		if(_piq.reportsTo !== undefined) {
 			for(var j=0;j<_piq.reportsTo.length;j++){
-				if(typeof _piq.reportsTo[j].reportsTo != 'undefined' && _piq.reportsTo[j].label != 'undefined' && typeof _piq.reportsTo[j]._about != 'undefined'){
+				if(_piq.reportsTo[j].reportsTo !== undefined && _piq.reportsTo[j].label !== undefined && _piq.reportsTo[j]._about !== undefined){
 					_piq = _piq.reportsTo[j];
 					j=j-1;
-				} else if(typeof _piq.reportsTo[j]._about != 'undefined') {
+				} else if(_piq.reportsTo[j]._about !== undefined) {
 					Orgvis.vars.firstNode = Orgvis.makeNode(_piq.reportsTo[j]);
 					//log('firstNode:');
 					//log(Orgvis.vars.firstNode);
@@ -1627,10 +1627,10 @@ var Orgvis = {
 
 	},
     getLabel: function(item) {
-        if (typeof item.prefLabel != 'undefined'){
+        if (item.prefLabel !== undefined){
             return item.prefLabel;
         }
-        if (typeof item.label != 'undefined'){
+        if (item.label !== undefined){
             return this.getValue(item.label);
         } else {
             return this.getValue(item);
@@ -1641,7 +1641,7 @@ var Orgvis = {
             item = item[0]
         if (typeof item == 'string')
             return item
-        if (item._value != 'undefined')
+        if (item._value !== undefined)
             return item._value
         return 'Unknown value'
     },
@@ -1662,19 +1662,19 @@ var Orgvis = {
             children:[]
         };
 
-        if(typeof item._about != 'undefined') {
+        if(item._about !== undefined) {
             node.data.uri = item._about;
         }
 
-        if(typeof item.label != 'undefined'){
+        if(item.label !== undefined){
             node.name = this.getValue(item.label);
         } else {
             node.name = "?";
         }
 
-        if(typeof item.grade != 'undefined') {
+        if(item.grade !== undefined) {
             if (Array.isArray(item.grade)){
-                if (typeof item.grade[0].label != 'undefined'){
+                if (item.grade[0].label !== undefined){
                     node.data.grade = this.getValue(item.grade[0].label);
                 } else {
                     node.data.grade = this.getValue(item.grade[0]);
@@ -1684,11 +1684,11 @@ var Orgvis = {
             }
         }
 
-        if(typeof item.postIn != 'undefined'){
+        if(item.postIn !== undefined){
             for(var a=item.postIn.length;a--;){
                 node.data.postIn.push(item.postIn[a]);
                 if(item.postIn[a]._about.indexOf("/unit/") > 0){
-                    if(typeof Orgvis.vars.unitList[Orgvis.getSlug(item.postIn[a]._about)] == 'undefined'){
+                    if(Orgvis.vars.unitList[Orgvis.getSlug(item.postIn[a]._about)] === undefined){
                         Orgvis.vars.unitList[Orgvis.getSlug(item.postIn[a]._about)] = {
                             name: Orgvis.getLabel(item.postIn[a].label),
                             uri: item.postIn[a]._about,
@@ -1702,9 +1702,9 @@ var Orgvis = {
         }
 
         // Handle posts that report to more than one post
-        if(typeof item.reportsTo != 'undefined'){
+        if(item.reportsTo !== undefined){
             for(var a=item.reportsTo.length;a--;){
-                if(typeof item.reportsTo[a]._about != 'undefined'){
+                if(item.reportsTo[a]._about !== undefined){
                     node.data.reportsTo.push(item.reportsTo[a]._about);
                 } else {
                     node.data.reportsTo.push(item.reportsTo[a]);
@@ -1713,7 +1713,7 @@ var Orgvis = {
         }
 
         // Handle posts that are held by more than one person (before grouping)
-        if(typeof item.heldBy != 'undefined'){
+        if(item.heldBy !== undefined){
             for(var a=item.heldBy.length;a--;){
 
                 var person = {
@@ -1724,34 +1724,34 @@ var Orgvis = {
 
                 var p = item.heldBy[a];
 
-                if(typeof p.name != 'undefined'){
+                if(p.name !== undefined){
                     person.foafName = this.getValue(p.name);
                 }
-                if(typeof p.phone != 'undefined'){
+                if(p.phone !== undefined){
                     person.foafPhone = this.getValue(this.getLabel(p.phone));
                 }
-                if(typeof p.email != 'undefined'){
+                if(p.email !== undefined){
                     person.foafMbox = this.getValue(this.getLabel(p.email));
                 }
-                if(typeof p.tenure != 'undefined' && typeof p.tenure.workingTime != 'undefined'){
+                if(p.tenure !== undefined && p.tenure.workingTime !== undefined){
                     person.workingTime = p.tenure.workingTime;
                 }
-                if(typeof p.profession != 'undefined'){
+                if(p.profession !== undefined){
                     person.profession = this.getValue(this.getLabel(p.profession));
                 }
-                if(typeof item._about != 'undefined'){
+                if(item._about !== undefined){
                     person.holdsPostURI = item._about;
                 }
-                if(typeof item.comment != 'undefined'){
+                if(item.comment !== undefined){
                     person.comment = this.getValue(item.comment);
                 }
-                if(typeof item.note != 'undefined'){
+                if(item.note !== undefined){
                     person.note = this.getValue(item.note);
                 }
 
                 node.data.totalWorkingTime += person.workingTime;
 
-                if(typeof item.reportsTo != 'undefined'){
+                if(item.reportsTo !== undefined){
                     for(var b=item.reportsTo.length;b--;){
                         person.reportsToPostURI.push(item.reportsTo[b]._about);
                     }
@@ -1768,13 +1768,13 @@ var Orgvis = {
                 salaryCostOfReports:-1,
                 workingTime:0
             };
-            if(typeof item.comment != 'undefined'){
+            if(item.comment !== undefined){
                 person.comment = item.comment;
             }
-            if(typeof item.note != 'undefined'){
+            if(item.note !== undefined){
                 person.note = item.note;
             }
-            if(typeof item.reportsTo != 'undefined'){
+            if(item.reportsTo !== undefined){
                 for(var b=item.reportsTo.length;b--;){
                     person.reportsToPostURI.push(item.reportsTo[b]._about);
                 }
@@ -1783,8 +1783,8 @@ var Orgvis = {
             node.data.heldBy.push(person);
         }
 
-        if(typeof item.salaryRange != 'undefined'){
-            if(typeof item.salaryRange.label != 'undefined'){
+        if(item.salaryRange !== undefined){
+            if(item.salaryRange.label !== undefined){
                 // Post has one salary range
                 log(node.name+" has one salary range");
 
@@ -1852,31 +1852,31 @@ var Orgvis = {
 				children:[]
 			};
 
-		if(typeof el.label != 'undefined' && typeof el.label[0] != 'undefined'){
+		if(el.label !== undefined && el.label[0] !== undefined){
 			node.data.fullName = Orgvis.getLabel(el.label[0]);
 		}
 
-		if(typeof el.atGrade != 'undefined'){
+		if(el.atGrade !== undefined){
 
-			if(typeof el.atGrade.prefLabel != 'undefined'){
+			if(el.atGrade.prefLabel !== undefined){
 				node.data.grade = Orgvis.getLabel(el.atGrade.prefLabel);
 			} else{
 				node.data.grade = "Other";
 			}
 
-			if(typeof el.atGrade.payband != 'undefined'){
+			if(el.atGrade.payband !== undefined){
 
-				if(typeof el.atGrade.payband.prefLabel != 'undefined'){
+				if(el.atGrade.payband.prefLabel !== undefined){
 					node.data.payband = Orgvis.getLabel(el.atGrade.payband.prefLabel);
 				} else {
 					node.data.payband = "No payband";
 				}
 
-				if(typeof el.atGrade.payband.salaryRange != 'undefined') {
+				if(el.atGrade.payband.salaryRange !== undefined) {
 
 					var salaryRangeLabel, salaryRangeValue;
 
-					if(typeof el.atGrade.payband.salaryRange.label != 'undefined'){
+					if(el.atGrade.payband.salaryRange.label !== undefined){
 						salaryRangeLabel = Orgvis.getLabel(el.atGrade.payband.salaryRange.label);
 			  			salaryRangeValue = salaryRangeLabel.replace(/£/g,'');
 			  			salaryRangeValue = salaryRangeValue.split(" - ");
@@ -1903,34 +1903,25 @@ var Orgvis = {
 			node.data.salaryRangeVal = "0";
 		}
 
-		if(typeof el.fullTimeEquivalent != 'undefined'){
+		if(el.fullTimeEquivalent !== undefined){
 			node.data.fullTimeEquivalent = el.fullTimeEquivalent;
 		}
 
-		if(typeof el.withJob != 'undefined'){
-			if(typeof el.withJob.prefLabel != 'string'){
+		if(el.withJob !== undefined && el.withJob._about !== undefined){
 				node.name = Orgvis.getLabel(el.withJob.prefLabel);
 				node.data.job = Orgvis.getLabel(el.withJob.prefLabel);
-			} else {
-				node.name = Orgvis.getLabel(el.withJob.prefLabel);
-				node.data.job = Orgvis.getLabel(el.withJob.prefLabel);
-			}
 		} else {
 			node.name = "Job not disclosed";
 			node.data.job = "Job not disclosed";
 		}
 
-		if(typeof el.withProfession != 'undefined'){
-			if(typeof el.withProfession.prefLabel != 'string'){
+		if(el.withProfession !== undefined && el.withProfession.prefLabel !== undefined){
 				node.data.profession = Orgvis.getLabel(el.withProfession.prefLabel);
-			} else {
-				node.data.profession = Orgvis.getLabel(el.withProfession.prefLabel);
-			}
 		} else {
-			node.data.profession = "Other"
+			node.data.profession = "Other";
 		}
 
-		if(typeof el.inUnit != 'undefined' && typeof el.inUnit.label != 'undefined' && typeof el.inUnit._about != 'undefined'){
+		if(el.inUnit !== undefined && el.inUnit.label !== undefined && el.inUnit._about !== undefined){
 			node.data.unit.label = Orgvis.getLabel(el.inUnit.label);
 			node.data.unit.uri = el.inUnit._about;
 		} else {
@@ -1938,7 +1929,7 @@ var Orgvis = {
 			node.data.unit.uri = "Other";
 		}
 
-		if(typeof el.reportingTo != 'undefined' && typeof el.reportingTo.label != 'undefined' && typeof el.reportingTo._about != 'undefined'){
+		if(el.reportingTo !== undefined && el.reportingTo.label !== undefined && el.reportingTo._about !== undefined){
 			node.data.reportingTo.label = Orgvis.getLabel(el.reportingTo.label);
 			node.data.reportingTo.uri = el.reportingTo._about;
 		}
@@ -2030,7 +2021,7 @@ var Orgvis = {
 			if (!Orgvis.vars.postList[postID]) {
 				// Create the key and give it a value
 				Orgvis.vars.postList[postID] = Orgvis.makeNode(items[i]);
-				if(typeof options.childrenAdded != 'undefined'){
+				if(options.childrenAdded !== undefined){
 					Orgvis.vars.postList[postID].data.childrenAdded = options.childrenAdded;
 				}
 			}
@@ -2052,7 +2043,7 @@ var Orgvis = {
 			//log("postList[i]:");
 			//log(postList[i]);
 
-			if(typeof postList[i].data.reportsTo != 'undefined' && postList[i].data.reportsTo.length > 0 && postList[i].data.reportsTo != 'error') {
+			if(postList[i].data.reportsTo !== undefined && postList[i].data.reportsTo.length > 0 && postList[i].data.reportsTo != 'error') {
 				//log("postList[i].data:");
 				//log(postList[i].data);
 				var postID = Orgvis.getSlug(postList[i].data.reportsTo[0]);
@@ -2121,28 +2112,28 @@ var Orgvis = {
 
 			var pSlug,gSlug,uSlug;
 
-			if(typeof items[i].withProfession != 'undefined'){
+			if(items[i].withProfession !== undefined && items[i].withProfession._about !== undefined){
 				pSlug = Orgvis.getSlug(items[i].withProfession._about);
 			} else {
 				pSlug = "other";
 			}
-			if(typeof items[i].atGrade != 'undefined'){
+			if(items[i].atGrade !== undefined && items[i].atGrade._about !== undefined){
 				gSlug = Orgvis.getSlug(items[i].atGrade._about);
 			} else {
 				gSlug = "other";
 			}
-			if(typeof items[i].inUnit != 'undefined'){
+			if(items[i].inUnit !== undefined && items[i].inUnit._about !== undefined){
 				uSlug = Orgvis.getSlug(items[i].inUnit._about);
 			} else {
 				uSlug = "other";
 			}
 
 			// Group by profession
-			if(typeof byProfession[pSlug] != 'undefined'){
+			if(byProfession[pSlug] !== undefined){
 				byProfession[pSlug].children.push(Orgvis.makeJuniorPostNode(items[i]));
 				byProfession[pSlug].data.fteTotal += items[i].fullTimeEquivalent;
 			} else {
-				if(typeof items[i].withProfession != 'undefined'){
+				if(items[i].withProfession !== undefined && items[i].withProfession.prefLabel !== undefined){
 					byProfession[pSlug] = Orgvis.makeJuniorPostGroup(items[i].withProfession.prefLabel,"Profession");
 				} else {
 					byProfession[pSlug] = Orgvis.makeJuniorPostGroup("Other","Profession");
@@ -2151,13 +2142,13 @@ var Orgvis = {
 				byProfession[pSlug].data.fteTotal = items[i].fullTimeEquivalent;
 			}
 			// Group by grade
-			if(typeof byGrade[gSlug] != 'undefined'){
+			if(byGrade[gSlug] !== undefined){
 				byGrade[gSlug].children.push(Orgvis.makeJuniorPostNode(items[i]));
 				byGrade[gSlug].data.fteTotal += items[i].fullTimeEquivalent;
 			} else {
 
-			  	if(typeof items[i].atGrade.payband != 'undefined' && typeof items[i].atGrade.payband.salaryRange != 'undefined'){
-					if(typeof items[i].atGrade.payband.salaryRange.label != 'undefined'){
+			  	if(items[i].atGrade.payband !== undefined && items[i].atGrade.payband.salaryRange !== undefined){
+					if(items[i].atGrade.payband.salaryRange.label !== undefined){
 			  		salaryRange = addCommas(Orgvis.getLabel(items[i].atGrade.payband.salaryRange.label));
 					}else{
 					salaryRange = "Salary Not Available";
@@ -2170,7 +2161,7 @@ var Orgvis = {
 				byGrade[gSlug].data.fteTotal = items[i].fullTimeEquivalent;
 			}
 			// Group by unit
-			if(typeof byUnit[uSlug] != 'undefined'){
+			if(byUnit[uSlug] !== undefined){
 				byUnit[uSlug].children.push(Orgvis.makeJuniorPostNode(items[i]));
 				byUnit[uSlug].data.fteTotal += items[i].fullTimeEquivalent;
 			} else {
@@ -2180,7 +2171,7 @@ var Orgvis = {
 			}
 
 			// If a JP reports to a post
-			if(typeof items[i].reportingTo != 'undefined') {
+			if(items[i].reportingTo !== undefined) {
 				//log("connectJuniorPosts: found junior post");
 				var postID = Orgvis.getSlug(items[i].reportingTo._about);
 				//log("postID: "+postID);
@@ -2266,7 +2257,7 @@ var Orgvis = {
 		// and set their "childrenAdded" flags to true.
 		var nodes = [];
 
-		if(pNodes != 'undefined'){
+		if(pNodes !== undefined){
 			// check to see if pNodes is an object or an array
 			if(pNodes.constructor.toString().indexOf("Array") == -1){
 				nodes.push(pNodes);
@@ -2410,7 +2401,7 @@ var Orgvis = {
 
 				var tempID = Orgvis.getSlug(hb[i].holdsPostURI);
 
-				if(typeof hb[i].foafName != 'undefined'){
+				if(hb[i].foafName !== undefined){
 					html += '<h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all"><a class="name infobox_'+tempID+'">'+hb[i].foafName+'</a></h3>';
 				}else {
 					html += '<h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-corner-all"><a class="name infobox_'+tempID+'">?</a></h3>';
@@ -2426,11 +2417,11 @@ var Orgvis = {
 				}
 
 
-				if(typeof nd.grade != 'undefined'){
+				if(nd.grade !== undefined){
 						html += '<p class="grade"><span>Grade</span><span class="value">'+nd.grade+'</span><a class="data" target="_blank" href="../post-list?'+Orgvis.vars.global_orgSlug+'='+Orgvis.vars.global_postOrg+'&property=grade&value='+nd.grade+(Orgvis.vars.previewMode?'&preview=true':'')+'">Post list</a></p>';
 				}
 
-				if(typeof nd.salaryRange[i] != 'undefined'){
+				if(nd.salaryRange[i] !== undefined){
 					html += '<p class="salary"><span>Salary</span><span class="value">'+addCommas(nd.salaryRange[i])+'</span><a class="data" target="_blank" href="http://'+Orgvis.vars.apiBase+'/doc/'+Orgvis.vars.global_typeOfOrg+'/'+Orgvis.vars.global_postOrg+'/post/'+tempID+'">Data</a></p>';
 				}
 
@@ -2449,15 +2440,15 @@ var Orgvis = {
 				}
 
 
-				if(typeof hb[i].comment != 'undefined'){
+				if(hb[i].comment !== undefined){
 					html+='<p class="comment"><span>Role</span><span class="text">'+hb[i].comment+'</span></p>';
 				}
 
-				if(typeof hb[i].note != 'undefined'){
+				if(hb[i].note !== undefined){
 					html+='<p class="comment"><span>Notes</span><span class="text">'+hb[i].note+'</span></p>';
 				}
 
-				if(typeof hb[i].profession != 'undefined'){
+				if(hb[i].profession !== undefined){
 					if(typeof hb[i].profession != 'string'){
 						html+='<p class="profession"><span>Profession</span><span class="value">'+hb[i].profession[0]+'</span></p>';
 					} else {
@@ -2465,19 +2456,19 @@ var Orgvis = {
 					}
 				}
 
-				if(typeof hb[i].foafMbox != 'undefined'){
+				if(hb[i].foafMbox !== undefined){
 					html += '<p class="email"><span>Email</span><span class="value">'+hb[i].foafMbox+'</span></p>';
 				}
 
-				if(typeof hb[i].foafPhone != 'undefined'){
+				if(hb[i].foafPhone !== undefined){
 					html += '<p class="tel"><span>Phone</span><span class="value">'+hb[i].foafPhone+'</span></p>';
 				}
 
-				if (typeof tempUnitLabel != 'undefined') {
+				if (tempUnitLabel !== undefined) {
 					html+= '<p class="unit"><span>Unit(s)</span><span class="value">'+tempUnitLabel+'</span><a class="data" target="_blank" href="http://'+Orgvis.vars.apiBase+'/doc/'+Orgvis.vars.global_typeOfOrg+'/'+Orgvis.vars.global_postOrg+'/unit/'+tempUnitID+'">Data</a>';
 				}
 
-				if(typeof hb[i].notes != 'undefined'){
+				if(hb[i].notes !== undefined){
 					html+='<p class="notes"><span>Notes</span><span class="text">'+hb[i].notes+'</span></p>';
 				}
 
@@ -2521,11 +2512,11 @@ var Orgvis = {
 		html += '<div class="panel ui-accordion ui-widget ui-helper-reset ui-accordion-icons">';
 		html += '<div class="content ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-corner-top">';
 
-		if(typeof nd.job != 'undefined'){
+		if(nd.job !== undefined){
 			html += '<p class="profession"><span>Profession</span><span class="value">'+nd.job+'</span></p>';
 		}
 
-		if(typeof nd.profession != 'undefined'){
+		if(nd.profession !== undefined){
 			html += '<p class="profession"><span>Profession</span><span class="value">'+nd.profession+'</span></p>';
 		}
 
