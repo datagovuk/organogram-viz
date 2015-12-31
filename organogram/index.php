@@ -24,9 +24,9 @@ $thisPubbod = '';
 $thisDept = '';
 
 if (!empty( $_GET['pubbod']))
-    $thisPubbod = $_GET['pubbod'];
+    $thisPubbod = filter_var($_GET['pubbod'], FILTER_SANITIZE_STRING);
 if (!empty( $_GET['dept']))
-    $thisDept = $_GET['dept'];
+    $thisDept = filter_var($_GET['dept'], FILTER_SANITIZE_STRING);
 
 include 'functions.php';
 
@@ -41,7 +41,7 @@ $pubbodyUri = "http://reference.data.gov.uk/id/public-body/" . $thisPubbod;
 
 $thisVersion = '';
 if (!empty($_GET['version']))
-    $thisVersion = $_GET['version'];
+    $thisVersion = filter_var($_GET['version'], FILTER_SANITIZE_STRING);
 $arrVersions = getVersions($versions, $deptUri, $pubbodyUri);
 echo '<script>console.log('.json_encode($arrVersions).');</script>';
 if($thisVersion==''){
@@ -72,7 +72,7 @@ if (count($top_dog->results->bindings) > 0) {
 echo '<script>console.log("Top dog: '.$top_dog.', startPos:'.$startPos.', thisPost: '.$thisPost.'");</script>';
 $preview = FALSE;
 if (!empty($_GET['preview']))
-    $preview = $_GET['preview'];
+    $preview = filter_var($_GET['preview'], FILTER_SANITIZE_STRING);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
