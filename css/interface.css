@@ -4,7 +4,7 @@
 
 html,body
 {
-	background:url('../images/body_bg_big.png') repeat scroll 0 0 #CCCCCC;
+	background-color: #CCCCCC;
 	font-family:"Lucida Grande", Verdana;
 	font-size:0.9em;
 	margin:0;
@@ -46,11 +46,11 @@ h1.title
     -moz-box-shadow: 0 5px 24px #888888;
     box-shadow: 0 5px 24px #888888;
     -webkit-box-shadow: 0 5px 24px #888888;
-    background-color: #000000;
-    background-image: url("../images/hmg-banner.png");
+    background-color: #FFFFFF;
+    background-image: url("../images/hmg-banner-white.png");
     background-position: left center;
     background-repeat: no-repeat;
-    border-bottom: 1px solid #666666;
+    border-bottom: 1px solid #CCCCCC;
     color: #FFFFFF;
     font-size: 16px;
     height: 33px;
@@ -228,9 +228,9 @@ div#right
     -moz-box-shadow: 0 5px 24px #888888;
     box-shadow: 0 5px 24px #888888;
     -webkit-box-shadow: 0 5px 24px #888888;
-    background-color: #000000;
+    background-color: #FFFFFF;
     bottom: 15px !important;
-    color: #EEEEEE;
+    color: #333333;
     font-size: 10px;
     height: auto;
     padding-bottom: 10px;
@@ -252,7 +252,7 @@ body.IE6 div#right {
 	display:none;
 }
 div#right p {
-	text-shadow:1px 1px #111111;
+	text-shadow:1px 1px #AAAAAA;
 	margin-top:25px;
 }
 /* Controls */

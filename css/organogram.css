@@ -193,6 +193,7 @@ margin-left:10px;
 	position:absolute;
 	right:135px;
 	top:55px;
+  width: 290px;
 	z-index:999;
 }
 body.IE8 div#infobox {
@@ -238,7 +239,6 @@ body.IE7 div#infobox {
 {
 	border-bottom:1px solid #CCCCCC;
 	font-size:14px;
-	max-width: 200px;
 	margin-bottom:0;
 	margin-left:0;
 	margin-top:0;

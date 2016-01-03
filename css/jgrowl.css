@@ -2,7 +2,7 @@
 div.jGrowl {
 	padding: 			10px;
 	z-index: 			9999;
-	color: 				#fff;
+	color: 				#000000;
 	font-size: 			12px;
 }
 
@@ -82,9 +82,9 @@ div.center div.jGrowl-notification, div.center div.jGrowl-closer {
 }
 
 div.jGrowl div.jGrowl-notification, div.jGrowl div.jGrowl-closer {
-	background-color: 		#000;
+	background-color: 		#FFFFFF;
 	/*opacity: 				.85;
-    -ms-filter: 			"progid:DXImageTransform.Microsoft.Alpha(Opacity=85)"; 
+    -ms-filter: 			"progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
     filter: 				progid:DXImageTransform.Microsoft.Alpha(Opacity=85); */
 	zoom: 					1;
 	width: 					235px;
@@ -106,7 +106,7 @@ div.jGrowl div.jGrowl-notification {
 	-webkit-box-shadow: 0 5px 10px #666666;
     background-position: 8px 50%;
     background-repeat: no-repeat;
-    padding-left: 45px;	
+    padding-left: 45px;
     opacity:0.8;
 }
 
@@ -121,7 +121,7 @@ div.jGrowl div.jGrowl-notification div.jGrowl-close {
 	font-weight: 			bold;
 	font-size: 				1em;
 	cursor:					pointer;
-	color:					#FFFFFF;
+	color:					#000000;
 }
 
 div.jGrowl div.jGrowl-closer {
@@ -131,13 +131,13 @@ div.jGrowl div.jGrowl-closer {
 	font-size:				.9em;
 	font-weight: 			bold;
 	text-align: 			center;
-	background: #000000;
-	color:#FFFFFF;
+	background: #FFFFFF;
+	color:#000000;
 	border:none;
 	width: 270px;
 	box-shadow: 0 5px 10px #666666;
 	-moz-box-shadow: 0 5px 10px #666666;
-	-webkit-box-shadow: 0 5px 10px #666666;	
+	-webkit-box-shadow: 0 5px 10px #666666;
 }
 
 /** Hide jGrowl when printing **/
@@ -149,16 +149,16 @@ div.jGrowl div.jGrowl-closer {
 
 
 div.jGrowl div.Loading {
-    background-image: url("../images/loading.gif");
+    background-image: url("../images/loading-white.gif");
 }
 div.jGrowl div.Error {
     background-image: url("../images/red.png");
-	color: #E66B6B;
+	color: #99494a;
 }
 div.jGrowl div.Info {
     background-image: url("../images/yellow.png");
 }
 div.jGrowl div.Success {
     background-image: url("../images/green.png");
-	color: #A1EAA5;
+	color: #459444;
 }
