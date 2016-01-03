@@ -26,7 +26,6 @@ body.IE7 h1.breadcrumbs  {
 h1.title label {
     background-color: #534D62;
     border: 1px solid #777777;
-    border-radius: 5px 5px 5px 5px;
     display: block;
     float: right;
     font-family: Verdana,Arial,sans-serif;
@@ -76,7 +75,7 @@ body.IE7 h1.title label {
 	top: -28px;
     margin-right: 10px;
     padding: 0;
-    float: right;	
+    float: right;
 }
 body.IE7 h1.title select#filterBy {
     width: 300px;
@@ -179,14 +178,11 @@ margin-left:10px;
 }
 #infobox
 {
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px 10px 10px 10px;
 	-moz-box-shadow: 0 5px 24px #888888;
 	box-shadow: 0 5px 24px #888888;
 	-webkit-box-shadow: 0 5px 24px #888888;
 	background-color:#FFFFFF;
 	border:1px solid #DDDDDD;
-	border-radius:10px 10px 10px 10px;
 	color:#333333;
 	display:none;
 	height:auto;
@@ -196,7 +192,7 @@ margin-left:10px;
 	padding:0 0 5px;
 	position:absolute;
 	right:135px;
-	top:55px;	
+	top:55px;
 	z-index:999;
 }
 body.IE8 div#infobox {
@@ -222,7 +218,7 @@ body.IE7 div#infobox {
 	position:relative;
 }
 
-/* UI Overrides 
+/* UI Overrides
  Infobox */
 #infobox .ui-accordion .ui-accordion-header a
 {
@@ -366,20 +362,17 @@ div.expander
 /* Node styles */
 div.node
 {
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px 5px 5px 5px;
 	background-color:#EEEEEE;
 	color: #000000;
 	border:1px solid #AAAAAA;
-	border-radius:5px 5px 5px 5px;
 	padding:5px 3px 0;
 	height: auto;
 	cursor: pointer;
 	font-size: 0.8em;
 	text-align: center;
 	text-decoration: none;
-	padding-top: 3px;		
-	
+	padding-top: 3px;
+
 }
 div.node.loaded {
 	background-color: #FFFFFF;
@@ -389,7 +382,7 @@ div.node.selected {
 }
 div.node.highlighted {
     background-color: #FBFBCE !important;
-    border: 3px solid #F9FF96;	
+    border: 3px solid #F9FF96;
 }
 div.node.highlighted span.postIn {
 	background:none repeat scroll 0 0 #818266;
@@ -400,9 +393,6 @@ div.node.highlighted span.childLoader {
 div.node span.heldBy {
     background-color: #819C9B;
     border: 1px solid #333333;
-   	-moz-border-radius:3px 3px 3px 3px;
-	-webkit-border-radius:3px 3px 3px 3px;
-	border-radius: 3px 3px 3px 3px;
     bottom: -11px;
     color: #FFFFFF;
     display: inline-block;
@@ -413,9 +403,6 @@ div.node span.heldBy {
 }
 div.node span.postIn
 {
-	-moz-border-radius:0 0 3px 3px;
-	-webkit-border-radius:0 0 3px 3px;
-	border-radius: 0 0 3px 3px;
     background: #8D6CD1;
     border: medium none;
     color: #FFFFFF;
@@ -530,7 +517,7 @@ div.panel div.content p.email span.value {
 	width:270px;
 }
 div.panel div.content p.unit span.value {
-	width:230px;	
+	width:230px;
 }
 div.panel div.content p span.date {
     background: none repeat scroll 0 0 transparent;
@@ -556,7 +543,6 @@ a.data
 {
     background: none repeat scroll 0 0 #999999;
     border: 1px solid #666666;
-    border-radius: 5px 5px 5px 5px;
     color: #EEEEEE;
     display: inline;
     float: right;
@@ -612,9 +598,6 @@ div.juniorPost {
     /*text-transform: uppercase;*/
 }
 div.juniorPost span.heldBy {
-    -moz-border-radius: 3px 3px 3px 3px;
-    border-radius: 3px 3px 3px 3px;
-    -webkit-border-radius: 3px 3px 3px 3px;
     border: 1px solid #9A9A9A;
     bottom: -13px;
     color: #000000;
@@ -658,7 +641,7 @@ div.jp_child span.jp_grade {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     -webkit-border-bottom-left-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;    
+    -webkit-border-bottom-right-radius: 5px;
     background-color: #555555;
     color: #FFFFFF;
     display: block;
@@ -668,7 +651,6 @@ div.jp_child span.jp_grade {
    	width:176px;
 }
 div.node span.childLoader {
-    border-radius: 3px 3px 3px 3px;
     background: none repeat scroll 0 0 #EEEEEE;
     border-color: #AAAAAA #AAAAAA #AAAAAA #EEEEEE;
     border-style: solid solid solid none;
@@ -684,9 +666,6 @@ div.node span.childLoader {
     z-index: 999;
 }
 div.node div.jp_group_selector {
-    border-radius: 0 0 5px 5px;
-    -moz-border-radius: 0 0 5px 5px;
-    -webkit-border-radius: 0 0 5px 5px;
     background-color: #343434;
     display: none;
     margin-left: 35px;
@@ -706,9 +685,6 @@ div.node div.jp_group_selector ul {
 }
 div.node div.jp_group_selector ul li {
     background-color: #FFFFFF;
-    border-radius: 3px 3px 3px 3px;
-    -moz-border-radius: 3px 3px 3px 3px;
-    -webkit-border-radius: 3px 3px 3px 3px;
     color: #333333;
     /*font-size: 9px;*/
     height: 20px;
@@ -789,28 +765,25 @@ div#infobox .ui-accordion .ui-accordion-header .ui-icon {
 /* starts new categorybox */
 #categorybox
 {
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px 10px 10px 10px;
 	-moz-box-shadow: 0 5px 24px #888888;
 	box-shadow: 0 5px 24px #888888;
 	-webkit-box-shadow: 0 5px 24px #888888;
 	background-color:#FFFFFF;
 	border:1px solid #DDDDDD;
-	border-radius:10px 10px 10px 10px;
 	color:#333333;
 	display:none;
 	height:auto;
 	margin-bottom:20px;
-	
+
 	padding:0 0 5px;
 	position:absolute;
 	left:135px;
-	top:55px;	
+	top:55px;
 	z-index:999;
 }
 
 #categorybox .panel {
-	width: 400px !important;	
+	width: 400px !important;
 }
 body.IE8 div#categorybox {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=225, Color='#777777')";
@@ -821,7 +794,7 @@ body.IE7 div#categorybox {
 #categorybox .ui-accordion .ui-accordion-content, #categorybox div.panel div.content {
 	border-top:0 none;
 	margin-bottom:2px;
-	margin-top:-2px;	
+	margin-top:-2px;
 	padding:0 !important;
 	position:relative;
 	top:1px;
@@ -834,7 +807,7 @@ body.IE7 div#categorybox {
 	position:relative;
 }
 
-/* UI Overrides 
+/* UI Overrides
  Infobox */
 #categorybox .ui-accordion .ui-accordion-header a
 {
@@ -890,19 +863,19 @@ div#categorybox .ui-accordion .ui-accordion-header .ui-icon {
 a.categorydata
 {
     background: none repeat scroll 0 0 #999999;
-    border: 1px solid #666666;   
-    color: #EEEEEE;	
-    display: block;    
+    border: 1px solid #666666;
+    color: #EEEEEE;
+    display: block;
     font-family: "Lucida Grande",Verdana;
     font-size: 9px;
-    font-weight: bold;   
+    font-weight: bold;
     padding: 1px 3px;
     letter-spacing: 0px;
     position: relative;
     right: 0;
     text-decoration: none !important;
     text-shadow: 1px 1px #666666;
-    text-transform: uppercase;	
+    text-transform: uppercase;
     word-wrap: normal !important;
 }
 
@@ -917,7 +890,7 @@ a.categorydata:hover
 
 #right .sign-off {
 	margin-top: 20px;
-	font-size: 1.2em;	
+	font-size: 1.2em;
 }
 
 #live-link {
@@ -931,3 +904,52 @@ a.categorydata:hover
 }
 
 #live-link a {color: #fff; text-decoration: underline;}
+
+/** Cosmetic touch ups 3 Jan */
+.ui-corner-all {
+  border-radius: 0;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background: #8a8a8a none repeat scroll 0 0;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+  background: #8d68d5 none repeat scroll 0 0;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.ui-corner-left {
+  -webkit-border-bottom-left-radius: 2px;
+  -webkit-border-top-left-radius: 2px;
+  -moz-border-bottom-left-radius: 2px;
+  -moz-border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.ui-corner-right {
+  -webkit-border-bottom-right-radius: 2px;
+  -webkit-border-top-right-radius: 2px;
+  -moz-border-bottom-right-radius: 2px;
+  -moz-border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+}
+.ui-corner-top {
+  -webkit-border-top-left-radius: 2px;
+  -webkit-border-top-right-radius: 2px;
+  -moz-border-top-left-radius: 2px;
+  -moz-border-top-right-radius: 2px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+.ui-corner-bottom {
+  -webkit-border-bottom-left-radius: 2px;
+  -webkit-border-bottom-right-radius: 2px;
+  -moz-border-bottom-left-radius: 2px;
+  -moz-border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}

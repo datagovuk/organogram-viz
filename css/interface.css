@@ -13,12 +13,9 @@ html,body
 }
 
 div.noscript {
-    -moz-border-radius: 10px 10px 10px 10px;
     -moz-box-shadow: 0 0 25px #717171;
-    border-radius: 10px 10px 10px 10px;
     box-shadow: 0 0 25px #717171;
-    -webkit-border-radius: 10px 10px 10px 10px;
-    -webkit-box-shadow: 0 0 25px #717171;    
+    -webkit-box-shadow: 0 0 25px #717171;
     background-color: #F1CBCB;
     background-image: url("../images/error.png");
     background-position: 10px center;
@@ -116,8 +113,6 @@ div.tip
 
 /*.tooltip
 {
-	-moz-border-radius-bottomright:5px;
-	-moz-border-radius-topright:5px;
 	background-color:cornflowerBlue;
 	color:#333333;
 	display:none;
@@ -130,7 +125,6 @@ div.tip
 
 .tooltip span
 {
-	-moz-border-radius:3px;
 	background-color:#FFFFFF;
 	color:#FFFFFF;
 	display:inline-block;
@@ -153,10 +147,7 @@ a:hover {
 
 a.close
 {
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px 5px 5px 5px;
 	background-color:#CCCCCC;
-	border-radius:5px 5px 5px 5px;
 	color:#333333;
 	cursor:pointer;
 	font-size:10px;
@@ -185,12 +176,9 @@ a:focus
 
 div#log
 {
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
     -moz-box-shadow: 0 5px 24px #888888;
     box-shadow: 0 5px 24px #888888;
-    -webkit-box-shadow: 0 5px 24px #888888;	
+    -webkit-box-shadow: 0 5px 24px #888888;
     background-color: #000000;
     /*border: 3px solid #DDDDDD;*/
     color: #EEEEEE;
@@ -237,9 +225,6 @@ body.IE7 div#log {
 /* Right panel */
 div#right
 {
-    -moz-border-radius: 10px 0px 0px 10px;
-    border-radius: 10px 0px 0px 10px;
-    -webkit-border-radius: 10px 0px 0px 10px;
     -moz-box-shadow: 0 5px 24px #888888;
     box-shadow: 0 5px 24px #888888;
     -webkit-box-shadow: 0 5px 24px #888888;
@@ -376,12 +361,10 @@ div#apiCalls a.sourceButton:hover
 div.apiCall
 {
 /*
-	-moz-border-radius:10px;
 	-moz-box-shadow:0 5px 24px #888888;
 	-webkit-box-shadow:0 5px 24px #888888;
 	background-color:#FFFFFF;
 	border:1px solid #DDDDDD;
-	border-radius:10px 10px 10px 10px;
 	bottom:20px;
 	box-shadow:0 5px 24px #888888;
 	color:#333333;
@@ -397,8 +380,8 @@ div.apiCall
 	text-align:left;
 	width:300px;
 	z-index:9999;*/
-	font-size:11px;	
-	text-align:left;	
+	font-size:11px;
+	text-align:left;
 }
 div.apiCall p {
 text-shadow: none;
@@ -547,9 +530,9 @@ body.IE6 {
 
 }
 div.ieBanner {
-clear: both; 
-height: 59px; 
-padding:15px; 
+clear: both;
+height: 59px;
+padding:15px;
 position: relative;
 margin-top:15%;
 background-color: #000000;
@@ -572,7 +555,7 @@ div.ui-dialog {
 
 /* Selectmenu
 ----------------------------------*/
-.ui-selectmenu { 
+.ui-selectmenu {
     display: inline-block;
     float: right;
     height: 20px;
@@ -589,7 +572,7 @@ div.ui-dialog {
     color: #FFFFFF;
     font-weight: normal;
 }
-.ui-selectmenu-icon { 
+.ui-selectmenu-icon {
     margin-top: -8px;
     position: absolute;
     right: 6px;
@@ -597,7 +580,7 @@ div.ui-dialog {
     margin-right: 0px;
     cursor: pointer;
 }
-.ui-selectmenu-menu { 
+.ui-selectmenu-menu {
 	background:#444444;
 	display: none;
     font-size: 11px;
@@ -633,7 +616,7 @@ div.ui-dialog {
 .ui-selectmenu-menu li.ui-selectmenu-hasIcon a,
 .ui-selectmenu-hasIcon .ui-selectmenu-status { padding-left: 20px; position: relative; margin-left: 5px; }
 .ui-selectmenu-menu li .ui-icon, .ui-selectmenu-status .ui-icon { position: absolute; top: 1em; margin-top: -8px; left: 0; }
-.ui-selectmenu-status { 
+.ui-selectmenu-status {
 font-size: 11px;
 }
 .ui-selectmenu-open li.ui-selectmenu-item-focus a {  }
