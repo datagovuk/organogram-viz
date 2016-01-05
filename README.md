@@ -32,6 +32,7 @@ Make Fuseki a service:
 
    sudo cp puppet-orgdc/files/etc/init.d/fuseki /etc/init.d/fuseki
 
+
 ## Run
 
 Start Fuseki:
@@ -45,6 +46,6 @@ Start Fuseki:
 
 The apache config has lots of rewrite rules. Much of this is to convert from the URLs provided by the old Puelia-based API to the newer Elda API. The organogram viz was originally designed to use those old URLs.
 
-### Legacy vizualizations
+# Legacy vizualizations
 
 This repo also contains some legacy vizualizations: see the `departments` and `post-list` directories.
