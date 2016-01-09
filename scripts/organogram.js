@@ -1349,7 +1349,7 @@ var Orgvis = {
 
 	    //Orgvis.getStatsData();
 
-	    Orgvis.updateFilter();
+	    //Orgvis.updateFilter();
 
 	    return false;
 
@@ -1588,7 +1588,7 @@ var Orgvis = {
 		//Orgvis.changeLog("Aligning node ...",true);
 		Orgvis.notify("Info","Aligning node...",false,"aligning");
 
-		Orgvis.updateFilter();
+		//Orgvis.updateFilter();
 
 		var t = 0;
 		var c = Orgvis.vars.postInQuestionReportsTo.length;

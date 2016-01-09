@@ -156,17 +156,37 @@ var versionsList =
 <![endif]>
 
 
-	<h1 class="title breadcrumbs">
-		<button id="back">Manage</button>
+	<!-- <h1 class="title breadcrumbs"> -->
+<!-- 		<button id="back">Manage</button>
 		<button id="category">Category</button>
 		<button id="dept">Department</button>
 		<button id="unit">Unit</button>
-		<button id="post">Post</button>
+		<button id="post">Post</button> -->
 
-		<select id="filterBy">
+		<!-- <select id="filterBy">
 			<option value="none" data-type="none">--</option>
-		</select> <label for="filterBy">Highlight</label>
-	</h1>
+		</select>
+		<label for="filterBy">Highlight</label> -->
+<!-- 		<div class="orientation title-control">
+			<p>Orientation</p>
+			<form>
+				<div id="orientation">
+					<input type="radio" id="top" name="orientation" checked="checked" /><label
+						for="top">Top</label> <input type="radio" id="left"
+						name="orientation" /><label for="left">Left</label>
+				</div>
+			</form>
+		</div> -->
+<!-- 		<div class="slider title-control">
+			<p>
+				<label for="versions" style="border: 0; color: #FFFFFF; font-weight: bold; background: #9A51C6">Version:</label>
+				<span id="versions" style="border: 0; color: #FFFFFF; font-weight: bold; background: #9A51C6"></span>
+			</p>
+			<div id="slider"></div>
+		</div> -->
+		<div id="apiCalls">
+		</div>
+	<!-- </h1> -->
 	<div id="live-link"></div>
 
 	<!--[if lt IE 7]>
@@ -186,7 +206,7 @@ var versionsList =
 	<div id="categorybox">
 		<a class="close">x</a>
 	</div>
-
+<!--
 	<div id="right" data-corner="left 10px">
 
 		<a class="aboutToggle" href="#">About</a>
@@ -250,16 +270,6 @@ var versionsList =
 			</form>
 		</div>
 
-		<!--<div class="navigate">
-			<p>Adjust</p>
-            <div id="nav">
-                <button id="nav_up">Up</button>
-                <button id="nav_down">Down</button>
-                <button id="center">Center</button>
-                <button id="nav_left">Left</button>
-                <button id="nav_right">Right</button>
-            </div>
-		</div> -->
 		<div class="slider">
 			<p>
 				<label for="versions"
@@ -271,10 +281,8 @@ var versionsList =
 		</div>
 
 		<div id="apiCalls">
-			<!--<p class="label">Data sources</p>-->
-			<!-- information about API calls goes here -->
 		</div>
-	</div>
+	</div> -->
 
 
 	<!--
