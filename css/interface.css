@@ -47,8 +47,8 @@ h1.title
     box-shadow: 0 5px 24px #888888;
     -webkit-box-shadow: 0 5px 24px #888888;
     background-color: #FFFFFF;
-    background-image: url("../images/hmg-banner-white.png");
-    background-position: left center;
+/*    background-image: url("../images/hmg-banner-white.png");
+*/    background-position: left center;
     background-repeat: no-repeat;
     border-bottom: 1px solid #CCCCCC;
     color: #FFFFFF;
@@ -58,7 +58,7 @@ h1.title
     margin: 0 0 0 -1px;
     min-height: 30px;
     overflow: hidden;
-    padding-left: 200px;
+    padding-left: 10px;
     padding-right: 0px;
     padding-top: 0 !important;
     position: fixed;
@@ -325,15 +325,14 @@ div#right ul li p
 
 
 /* Data Sources Panel */
-div#apiCalls
-{
-    bottom: 0;
-    display: none;
-    padding: 10px;
-    position: absolute;
-    right: 0;
-    width: 90px;
-    z-index: 9999;
+div#apiCalls {
+  bottom: 0;
+  display: none;
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  width: auto;
+  z-index: 9999;
 }
 
 div#apiCalls a.source
@@ -343,14 +342,19 @@ div#apiCalls a.source
 	margin-left:auto;
 	margin-right:auto;
 	width:30px;
+    float: right;
 }
-div#apiCalls a.sourceButton
-{
-	display:block;
-	margin-bottom:2px;
-	margin-left:auto;
-	margin-right:auto;
-	width:80px;
+div#apiCalls a.sourceButton {
+  display: block;
+  float: right;
+  margin-bottom: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 80px;
+}
+.ui-button-text-only .ui-button-text {
+  padding: 5px 0;
 }
 div#apiCalls a.sourceButton:hover
 {
@@ -458,7 +462,10 @@ div#apiCalls p.label
 {
 	margin:0 0 10px;
 }
-
+#apiCallLable {
+  display: block;
+  float: right;
+}
 div#formats
 {
 	bottom:0;
@@ -643,4 +650,7 @@ padding-left:5px;
 
 a.about-link {
 	color: blue;
+}
+.ui-widget-header {
+  background: #cccccc none repeat scroll 0 0;
 }
