@@ -437,6 +437,7 @@ div.panel
 	width:280px !important;
 }
 
+
 /*div.expander a.name span {
 margin:0;
 padding:0;
@@ -551,6 +552,7 @@ div.panel div.content p.grade span.g
 div.panel div.content p.salary span.value, div.panel div.content p.salaryReports span.value {
 	letter-spacing: 1px !important;
 }
+
 a.data
 {
     background: none repeat scroll 0 0 #999999;
@@ -599,6 +601,66 @@ div.panel h3 a.name
 	text-align:right;
 	text-decoration:none;
 	font-weight: bold;
+}
+div.api-call-panel {
+    width:auto !important;
+    padding: 0px !important;
+}
+div.api-call-panel h3 a.name {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 3px 0 3px 2.2em;
+  text-align: left;
+  text-decoration: none;
+}
+div.api-call-panel.ui-accordion .ui-accordion-content {
+    border-top: 0 none;
+    display: none;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+    top: -1px;
+}
+.ui-dialog {
+    overflow: visible;
+}
+ul.paramlist {
+  margin: 0 0 10px;
+}
+div.api-call-panel div.content p {
+  display: inline-block;
+  float: none;
+  font-family: Georgia;
+  font-weight: normal;
+  margin: 0;
+  overflow: hidden;
+  padding: 0 0 0 5px;
+  text-align: left;
+  width: 99% !important;
+  word-wrap: break-word;
+}
+div.api-call-panel div.content p span {
+    padding: 1px 1px 1px 10px;
+}
+div.api-call-panel div.content p.formats a span {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border-bottom: medium none;
+  border-top: medium none;
+  color: #ffffff;
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: normal;
+  margin: auto;
+  padding: 5px 10px;
+}
+div.sources-tip.ui-dialog-content {
+    padding: 0.5em;
+}
+.ui-dialog-buttonpane .ui-button-text-only .ui-button-text {
+    padding: 0.4em 1em;
 }
 div.juniorPost {
     background-color: #6A6A6A;
