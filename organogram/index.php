@@ -1,82 +1,6 @@
-<?php
-$versions = array(
-    //sparql/organogram/query
-    // '2014-09-30' => 'http://46.43.41.16/sparql/organogram/query',
-    // '2014-03-31' => 'http://46.43.41.16/sparql/organogram/query',
-    '2013-09-30' => 'http://46.43.41.16/sparql/organogram/query',
-    '2013-03-31' => 'http://46.43.41.16/sparql/organogram/query',
-    '2012-09-30' => 'http://46.43.41.16/sparql/organogram/query',
-    '2012-03-31' => 'http://46.43.41.16/sparql/organogram/query',
-    '2011-09-30' => 'http://46.43.41.16/sparql/organogram/query'
-    // '2011-03-31' => 'http://46.43.41.16/sparql/organogram/query'
-    );
-$versionSimple = array(
-	// '2014-09-30',
-	// '2014-03-31',
-	'2013-09-30',
-	'2013-03-31',
-	'2012-09-30',
-	'2012-03-31',
-	'2011-09-30',
-	// '2011-03-31'
-	);
-$thisPubbod = '';
-$thisDept = '';
-
-if (!empty( $_GET['pubbod']))
-    $thisPubbod = filter_var($_GET['pubbod'], FILTER_SANITIZE_STRING);
-if (!empty( $_GET['dept']))
-    $thisDept = filter_var($_GET['dept'], FILTER_SANITIZE_STRING);
-
-include 'functions.php';
-
-if(isset($_GET['obscured'])){
-	//not the live system so decrypt the pubbod and dept
-	$thisPubbod = base64_decode($thisPubbod);
-	$thisDept = base64_decode($thisDept);
-}
-
-$deptUri = "http://reference.data.gov.uk/id/department/" . $thisDept;
-$pubbodyUri = "http://reference.data.gov.uk/id/public-body/" . $thisPubbod;
-
-$thisVersion = '';
-if (!empty($_GET['version']))
-    $thisVersion = filter_var($_GET['version'], FILTER_SANITIZE_STRING);
-$arrVersions = getVersions($versions, $deptUri, $pubbodyUri);
-echo '<script>console.log('.json_encode($arrVersions).');</script>';
-if($thisVersion==''){
-	$thisVersion = $arrVersions[0]["version_value"];
-}
-
-//create array of ALL departments in ALL triplestores
-$arrDepts = getDepartmentsJSON($versions);
-
-$thisPost = "";
-$thisendPoint = $versions[$thisVersion];
-//echo "{".$thisendPoint."}";
-$deptURI = $deptUri;
-if($thisDept==""){
-    $deptURI = $pubbodyUri;
-}
-echo '<script>console.log("This version: '.$thisVersion.'");</script>';
-$api_cache = new API_cache (array("getTopDog", $thisendPoint, $deptURI, $thisVersion));
-$top_dog = json_decode($api_cache->get_api_cache());
-// echo '<script>console.log("Top dog result", '.json_decode($top_dog).');</script>';
-
-// echo '<script>console.log('.count($top_dog->results->bindings).');</script>'
-if (count($top_dog->results->bindings) > 0) {
-    $top_dog = $top_dog->results->bindings[0]->item->value;
-    $startPos = strrpos($top_dog, "/");
-    $thisPost = substr($top_dog, $startPos + 1);
-}
-echo '<script>console.log("Top dog: '.$top_dog.', startPos:'.$startPos.', thisPost: '.$thisPost.'");</script>';
-$preview = FALSE;
-if (!empty($_GET['preview']))
-    $preview = filter_var($_GET['preview'], FILTER_SANITIZE_STRING);
-?>
+<?php ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"
 	lang="en">
 <head>
@@ -87,21 +11,6 @@ if (!empty($_GET['preview']))
 	rel="shortcut icon">
 <link type="text/css" href="../css/interface.css" rel="stylesheet">
 <link type="text/css" href="../css/organogram.css" rel="stylesheet">
-<!-- Scripts -->
-<script language="javascript" type="text/javascript">
-//<!--
-var strDateFolder = "<?php echo $thisVersion?>";
-var departmentList =
-<?php echo json_encode($arrDepts);?>
-
-// reverse array to have latest version on right of slider
-var versionsList =
-<?php echo json_encode(array_reverse($arrVersions));?>
-
-//-->
-
-
-</script>
 
 <script language="javascript" type="text/javascript"
 	src="../scripts/jquery-latest.min.js"></script>
@@ -139,64 +48,34 @@ var versionsList =
 <![endif]-->
 
 <!--[if IE 7]>
-	<body class="IE7" onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $preview;?>');">
+	<body class="IE7" onload="Orgvis.init(false, false);">
 <![endif]-->
 
 <!--[if IE 8]>
-	<body class="IE8" onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $preview;?>');">
+	<body class="IE8" onload="Orgvis.init(false, false);">
 <![endif]-->
 
 <!--[if IE 9]>
-	<body class="IE9" onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $preview;?>');">
+	<body class="IE9" onload="Orgvis.init(false, false);">
 <![endif]-->
 
 <![if !IE]>
 <body
-	onload="Orgvis.init('<?php print $thisDept;?>','<?php print $thisPubbod;?>','<?php print $thisPost;?>',false,'<?php print $preview;?>');">
+	onload="Orgvis.init(false, false);">
 <![endif]>
 
 
-	<!-- <h1 class="title breadcrumbs"> -->
-<!-- 		<button id="back">Manage</button>
-		<button id="category">Category</button>
-		<button id="dept">Department</button>
-		<button id="unit">Unit</button>
-		<button id="post">Post</button> -->
-
-		<!-- <select id="filterBy">
-			<option value="none" data-type="none">--</option>
-		</select>
-		<label for="filterBy">Highlight</label> -->
-<!-- 		<div class="orientation title-control">
-			<p>Orientation</p>
-			<form>
-				<div id="orientation">
-					<input type="radio" id="top" name="orientation" checked="checked" /><label
-						for="top">Top</label> <input type="radio" id="left"
-						name="orientation" /><label for="left">Left</label>
-				</div>
-			</form>
-		</div> -->
-<!-- 		<div class="slider title-control">
-			<p>
-				<label for="versions" style="border: 0; color: #FFFFFF; font-weight: bold; background: #9A51C6">Version:</label>
-				<span id="versions" style="border: 0; color: #FFFFFF; font-weight: bold; background: #9A51C6"></span>
-			</p>
-			<div id="slider"></div>
-		</div> -->
-		<div id="apiCalls">
-		</div>
-	<!-- </h1> -->
+	<div id="apiCalls"></div>
 	<div id="live-link"></div>
 
 	<!--[if lt IE 7]>
-<div class="ieBanner">
-	<p>This application isn't going to work as it makes use of plugins and animation techniques that require a relatively modern browser.</p>
-	<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
-		<img src="http://www.theie6countdown.com/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
-	</a>
-</div>
-<![endif]-->
+	<div class="ieBanner">
+		<p>This application isn't going to work as it makes use of plugins and animation techniques that require a relatively modern browser.</p>
+		<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+			<img src="http://www.theie6countdown.com/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+		</a>
+	</div>
+	<![endif]-->
 
 	<div id="infovis"></div>
 
@@ -206,7 +85,7 @@ var versionsList =
 	<div id="categorybox">
 		<a class="close">x</a>
 	</div>
-<!--
+	<!--
 	<div id="right" data-corner="left 10px">
 
 		<a class="aboutToggle" href="#">About</a>
@@ -284,24 +163,7 @@ var versionsList =
 		</div>
 	</div> -->
 
-
-	<!--
-div id="login">
-	<form>
-		<fieldset>
-			<legend>Login</legend>
-			<label for="username">Username</label>
-			<input type="text" name="username" id="username" class="text" maxlength="30" />
-			<label for="password">Password</label>
-			<input type="password" name="password" id="password" class="text" maxlength="30" />
-		</fieldset>
-	</form>
-	<p class="logging-in login-message">Logging in...</p>
-	<p class="login-success login-message">Login successful!</p>
-	<p class="login-failed login-message">Login failed, try again.</p>
-	<p class="delHistory login-message">Login details forgotten!</p>
-</div
--->
+	<div class="sources-tip tip"></div>
 
 	<span id="previewModeSign"> <span>Preview Mode</span> </span>
 
