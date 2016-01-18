@@ -88,7 +88,7 @@ var Orgvis = {
 	},
 	getURLParameter:function(name) {
     return decodeURI(
-        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,''])[1]
 	    );
 	},
 	init:function(pMode, reload){
@@ -120,7 +120,6 @@ var Orgvis = {
 
 		if(postSlug.length < 1){
 			//showLog("No post selected!");
-			Orgvis.notify("Error","Cannot load organogram, no post selected!", true, "error_noPost");
 		} else{
 			Orgvis.vars.global_post = postSlug;
 		}
@@ -146,7 +145,6 @@ var Orgvis = {
 			Orgvis.vars.apiBase = domain;
 			Orgvis.startLoadingPosts(false);
 		}
-		Orgvis.showSignOff();
 		Orgvis.showLiveLink(deptSlug, pubbodSlug);
 	},
 	showLiveLink:function(dept, pubbod) {
@@ -164,24 +162,6 @@ var Orgvis = {
 		}
 		else {
 			$("#live-link").hide();
-		}
-	},
-	showSignOff:function() {
-		var filepath = Orgvis.getURLParameter("filepath");
-
-		if (filepath != "null") {
-			$.ajax({cache: false, url: "/sign-off.php?filepath=" + filepath, success : function(data){
-				if (data == "false") {
-					$("<button class='sign-off'>Signoff</button>").appendTo("#right").button().css("visibility","visible").click(function () {
-						$.ajax({cache: false, url: "/sign-off.php?create=true&filepath=" + filepath, success : function(data){
-							window.location.reload();
-						}});
-					});
-				}
-				else {
-					$("<div class='sign-off'>Organogram signed off</div>").appendTo("#right").css("visibility","visible")
-				}
-			}});
 		}
 	},
 	initSpaceTree:function(){
