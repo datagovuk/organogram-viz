@@ -1256,7 +1256,7 @@ var Orgvis = {
 
 				log("adding onDemand subtree for "+postID);
 				Orgvis.onDemandAddNodes(node,postID,originalChildren);
-			}, 2000);
+			}, 500);
 
 		}
 
@@ -2459,11 +2459,11 @@ var Orgvis = {
 		$("div.heldBy").show();
 
 		if(Orgvis.vars.firstLoad){
-			$("div.panel h3 a.infobox_"+Orgvis.vars.global_post).click();
+			// $("div.panel h3 a.infobox_"+Orgvis.vars.global_post).click();
 			Orgvis.vars.firstLoad=false;
 			Orgvis.vars.reOpen=false;
 		} else {
-			$("div.panel h3 a").eq(0).click();
+			// $("div.panel h3 a").eq(0).click();
 			Orgvis.vars.reOpen=true;
 		}
 
