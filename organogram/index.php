@@ -18,7 +18,7 @@
 	src="../scripts/jquery-ui-1.8.7.min.js"></script>
 <!--script language="javascript" type="text/javascript" src="../scripts/Jit/jit-yc.js"></script-->
 <script language="javascript" type="text/javascript"
-	src="../scripts/Jit/jit.js"></script>
+	src="../scripts/Jit/jit-2.0.1.js"></script>
 <script language="javascript" type="text/javascript"
 	src="../scripts/jquery.cookie.js"></script>
 <script language="javascript" type="text/javascript"
