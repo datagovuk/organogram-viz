@@ -213,7 +213,7 @@ var Orgvis = {
 			Navigation: {
 				enable: true,
 				panning: 'avoid nodes',
-				zooming: 40
+				zooming: false
 			},
 			duration: 200,
 			fps:30,
