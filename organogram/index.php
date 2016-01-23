@@ -13,9 +13,9 @@
 <link type="text/css" href="../css/organogram.css" rel="stylesheet">
 
 <script language="javascript" type="text/javascript"
-	src="../scripts/jquery-latest.min.js"></script>
+	src="../scripts/jquery.min.js"></script>
 <script language="javascript" type="text/javascript"
-	src="../scripts/jquery-ui-1.8.7.min.js"></script>
+	src="../scripts/jquery-ui.min.js"></script>
 <!--script language="javascript" type="text/javascript" src="../scripts/Jit/jit-yc.js"></script-->
 <script language="javascript" type="text/javascript"
 	src="../scripts/Jit/jit-2.0.1.js"></script>
