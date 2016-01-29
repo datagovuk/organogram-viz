@@ -2376,7 +2376,7 @@ var Orgvis = {
 				html += '<div class="content ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom">';
 
 				if (tempID != "top") {
-					html+= '<p class="id"><span>Post ID</span><span class="value">'+tempID+'</span><a class="data postID" target="_blank" href="http://'+Orgvis.vars.apiBase+'/doc/'+Orgvis.vars.global_typeOfOrg+'/'+Orgvis.vars.global_postOrg+'/post/'+tempID+'">Data</a></p>';
+					html+= '<p class="id"><span>Post ID</span><span class="value">'+tempID+'</span><a class="data postID" target="_blank" href="http://'+Orgvis.vars.apiBase+'/'+Orgvis.vars.global_version+'/doc/'+Orgvis.vars.global_typeOfOrg+'/'+Orgvis.vars.global_postOrg+'/post/'+tempID+'">Data</a></p>';
 				}
 				else {
 					html+= '<p class="id"><span>Post ID</span><span class="value">'+tempID+'</span></p>';
@@ -2388,14 +2388,14 @@ var Orgvis = {
 				}
 
 				if(nd.salaryRange[i] !== undefined){
-					html += '<p class="salary"><span>Salary</span><span class="value">'+addCommas(nd.salaryRange[i])+'</span><a class="data" target="_blank" href="http://'+Orgvis.vars.apiBase+'/doc/'+Orgvis.vars.global_typeOfOrg+'/'+Orgvis.vars.global_postOrg+'/post/'+tempID+'">Data</a></p>';
+					html += '<p class="salary"><span>Salary</span><span class="value">'+addCommas(nd.salaryRange[i])+'</span><a class="data" target="_blank" href="http://'+Orgvis.vars.apiBase+'/'+Orgvis.vars.global_version+'/doc/'+Orgvis.vars.global_typeOfOrg+'/'+Orgvis.vars.global_postOrg+'/post/'+tempID+'">Data</a></p>';
 				}
 
 				var postObj = Orgvis.vars.postList[tempID];
 
 				if (tempID != "top") {
 					if(nd.gotStats) {
-						html += '<p class="salaryReports"><span>Combined salary of reporting posts</span><span class="value">'+nd.stats.salaryCostOfReports.formatted+'</span><a class="data" target="_blank" href="http://'+Orgvis.vars.apiBase+'/doc/'+Orgvis.vars.global_typeOfOrg+'/'+Orgvis.vars.global_postOrg+'/post/'+tempID+'/statistics" value="'+nd.stats.salaryCostOfReports.value+'">Data</a><span class="date">'+nd.stats.date.formatted+'</span>';
+						html += '<p class="salaryReports"><span>Combined salary of reporting posts</span><span class="value">'+nd.stats.salaryCostOfReports.formatted+'</span><a class="data" target="_blank" href="http://'+Orgvis.vars.apiBase+'/'+Orgvis.vars.global_version+'/doc/'+Orgvis.vars.global_typeOfOrg+'/'+Orgvis.vars.global_postOrg+'/post/'+tempID+'/statistics" value="'+nd.stats.salaryCostOfReports.value+'">Data</a><span class="date">'+nd.stats.date.formatted+'</span>';
 					} else {
 						html += '<p class="salaryReports"><span>Combined salary of reporting posts </span><span class="value">Checking...</span><img class="salaryReports" width="14" height="14" src="../images/loading_white.gif"></p>';
 					}
@@ -2431,7 +2431,7 @@ var Orgvis = {
 				}
 
 				if (tempUnitLabel !== undefined) {
-					html+= '<p class="unit"><span>Unit(s)</span><span class="value">'+tempUnitLabel+'</span><a class="data" target="_blank" href="http://'+Orgvis.vars.apiBase+'/doc/'+Orgvis.vars.global_typeOfOrg+'/'+Orgvis.vars.global_postOrg+'/unit/'+tempUnitID+'">Data</a>';
+					html+= '<p class="unit"><span>Unit(s)</span><span class="value">'+tempUnitLabel+'</span><a class="data" target="_blank" href="http://'+Orgvis.vars.apiBase+'/'+Orgvis.vars.global_version+'/doc/'+Orgvis.vars.global_typeOfOrg+'/'+Orgvis.vars.global_postOrg+'/unit/'+tempUnitID+'">Data</a>';
 				}
 
 				if(hb[i].notes !== undefined){
