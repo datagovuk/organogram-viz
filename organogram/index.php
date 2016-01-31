@@ -64,9 +64,7 @@
 	onload="Orgvis.init(false, false);">
 <![endif]>
 
-
 	<div id="apiCalls"></div>
-	<div id="live-link"></div>
 
 	<!--[if lt IE 7]>
 	<div class="ieBanner">
@@ -77,95 +75,17 @@
 	</div>
 	<![endif]-->
 
-	<div id="infovis"></div>
+	<div id="infovis">
 
-	<div id="infobox">
-		<a class="close">x</a>
+		<div id="infobox">
+			<a class="close">x</a>
+		</div>
+		<div id="categorybox">
+			<a class="close">x</a>
+		</div>
+
+		<div class="sources-tip tip"></div>
 	</div>
-	<div id="categorybox">
-		<a class="close">x</a>
-	</div>
-	<!--
-	<div id="right" data-corner="left 10px">
-
-		<a class="aboutToggle" href="#">About</a>
-
-		<div class="about-tip tip">
-			<p>This is an organisational chart (organogram) visualisation for the
-				structure of 'posts' within the UK government. Government
-				departments are comprised of units which contain posts and these
-				posts can be held by one or more people.</p>
-
-			<p>This visualisation shows the paths of responsibility in terms of
-				who reports to who for the post in question by including it's
-				'parent' posts and it's 'children' posts. Clicking on a post in the
-				visualisation should load it's children posts if there are any
-				present.</p>
-
-			<p>Each post has an information panel that includes information such
-				as the name of the person(s) that holds the post, their contact
-				details, the name of the departmental unit the post exists in, a
-				description of the post's role and there are also links available
-				that take you to the information itself - provided by the Linked
-				Data API.</p>
-
-			<p>The source code for this visualisation is available from <a class="about-link" href="http://code.google.com/p/linked-data-api/">http://code.google.com/p/linked-data-api/</a></p>
-			<p>To view the sources of data the visualisation uses at any time
-				while using it, there's information provided about all of the the
-				API calls made in the bottom right under "Data sources". Here you
-				can grab the data in several different formats and see which
-				parameters have been used to tailor the data for the visualisation.</p>
-
-			<p>
-				<strong>Controls: </strong>
-			</p>
-			<ul>
-				<li>Adjust: click and hold the organogram to drag it around.</li>
-				<li>Zoom: while hovering over the organogram, scroll up/down using a
-					mousewheel or trackpad to zoom in/out.</li>
-				<li>Alternatively, you can use the buttons provided on right hand
-					side.</li>
-			</ul>
-
-			<p>Please note: this application is still under development.</p>
-
-			<p>
-				<i>Powered by <a href="http://code.google.com/p/puelia-php/"
-					target="_blank">Puelia v0.1</a>, an implementation of the <a
-					href="http://code.google.com/p/linked-data-api" target="_blank">Linked
-						Data API</a> </i>
-			</p>
-
-		</div>
-
-		<div class="orientation">
-			<p>Orientation</p>
-			<form>
-				<div id="orientation">
-					<input type="radio" id="top" name="orientation" checked="checked" /><label
-						for="top">Top</label> <input type="radio" id="left"
-						name="orientation" /><label for="left">Left</label>
-				</div>
-			</form>
-		</div>
-
-		<div class="slider">
-			<p>
-				<label for="versions"
-					style="border: 0; color: #FFFFFF; font-weight: bold; background: #9A51C6">Version:</label>
-				<span id="versions"
-					style="border: 0; color: #FFFFFF; font-weight: bold; background: #9A51C6"></span>
-			</p>
-			<div id="slider"></div>
-		</div>
-
-		<div id="apiCalls">
-		</div>
-	</div> -->
-
-	<div class="sources-tip tip"></div>
-
-	<span id="previewModeSign"> <span>Preview Mode</span> </span>
 
 	<noscript>
 		<div class="noscript">
