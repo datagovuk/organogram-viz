@@ -1,3 +1,10 @@
+if(!Drupal){
+  var Drupal = {
+    ajax: {},
+    behaviors: {}
+  };
+}
+
 function log(info) {
   Orgvis.vars.debug && window.console && console.log && console.log(info);
 }
@@ -281,8 +288,8 @@ var Orgvis = {
     spaceTree.onClick(spaceTree.root);
 
   },
-  init: function(filename) {
-    OrgDataLoader.load(filename)
+  init: function(filename, infovisId) {
+    OrgDataLoader.load(filename, infovisId);
   },
   loadPostInfobox: function(node, infovisId) {
     var postID = node.data.id;
@@ -359,12 +366,12 @@ var Orgvis = {
 };
 
 var OrgDataLoader = {
-  docBase: "/organogram-ajax/preview/",
+  docBase: "",
   load: function(filename, infovisId, previewMarkup) {
     $.ajax({
       cache: false,
       dataType: "json",
-      url: this.docBase + filename,
+      url: this.docBase + "data/" + filename,
       success: function(ret) {
         var data = ret.data;
         $.ajax({
@@ -384,7 +391,9 @@ var OrgDataLoader = {
                       complete: function(juniorrows) {
                         junior = juniorrows.data;
                         $('.chart .ajax-progress').remove();
-                        Orgvis.showSpaceTree(OrgDataLoader.buildTree(data.name), infovisId);
+                        var tree = OrgDataLoader.buildTree(data.name);
+                        window.tree = tree;
+                        Orgvis.showSpaceTree(tree, infovisId);
                       }
                     });
                   },
@@ -411,10 +420,12 @@ var OrgDataLoader = {
   },
 
   buildTree: function(department) {
+    console.log('buildTree', department);
     var hierarchy = {};
-    var tree = [];
     var processed = [];
     var seniorPosts = {};
+    window.hierarchy = hierarchy;
+    window.seniorPosts = seniorPosts;
 
     function getChildren(postRef) {
       var children = [];
@@ -525,18 +536,23 @@ var OrgDataLoader = {
       }
       hierarchy[reportsTo].push(createJuniorPostNode(post));
     });
-    //At this point hierarchy contains a map of senior posts with their reporting post and a list of
-    //junior posts who report to them.
-    senior.forEach(function(post, index, array) {
-      var postUR = post['Post Unique Reference'];
+
+    // //At this point hierarchy contains a map of senior posts with their reporting post and a list of
+    // //junior posts who report to them.
+    var topPost;
+    $.each(hierarchy, function(key, post) {
+      var postUR = key;
+      if(postUR == 'xx') {
+        topPost = post[0];
+      }
       var children = getChildren(postUR);
       if (-1 == processed.indexOf(postUR)) {
         var seniorPost = createSeniorPostNode(post);
         seniorPost.children = children;
-        tree.push(seniorPost);
       }
     });
-    return tree[0];
+    return seniorPosts[topPost.id];
+    //return seniorPosts[hierarchy.xx[0].id];
   },
   errorMessage: function(message) {
     $('.field-name-field-organogram .form-type-managed-file').append('<div class="alert alert-block alert-danger"><a class="close" data-dismiss="alert" href="#">×</a><h4 class="element-invisible">Error message</h4>' + message + '</div>');
@@ -634,9 +650,9 @@ var OrgDataLoader = {
         });
 
 
-        var filename = $(this).attr('data-organogram-file');
+        //var filename = $(this).attr('data-organogram-file');
         $('.chart').append('<div class="ajax-progress"><div class="throbber">&nbsp;</div></div>');
-        OrgDataLoader.load(filename, infovisId, previewMarkup);
+        OrgDataLoader.load('6037.json', infovisId, previewMarkup);
       });
     },
 
@@ -750,7 +766,7 @@ var OrgDataLoader = {
       });
     }
   };
-  OrgDataLoader.docBase = '/organogram-ajax/preview/';
+  //OrgDataLoader.docBase = '/organogram-ajax/preview/';
 
   $.fn.listHandlers = function(events, outputFunction) {
     return this.each(function(i) {

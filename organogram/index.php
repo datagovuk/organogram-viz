@@ -28,7 +28,9 @@
 <script language="javascript" type="text/javascript"
 	src="../scripts/ui.selectmenu.js"></script>
 <script language="javascript" type="text/javascript"
-	src="../scripts/organogram.js"></script>
+	src="../scripts/papaparse.js"></script>
+<script language="javascript" type="text/javascript"
+	src="../scripts/organogram-csv-old.js"></script>
 
 
 <!--[if lt IE 9]>
@@ -61,7 +63,7 @@
 
 <![if !IE]>
 <body
-	onload="Orgvis.init(false, false);">
+	onload="Orgvis.init('6037.json', 'infovis');">
 <![endif]>
 
 	<div id="apiCalls"></div>
@@ -77,7 +79,7 @@
 
 	<div id="infovis">
 
-		<div id="infobox">
+		<div id="infobox" class="infobox">
 			<a class="close">x</a>
 		</div>
 		<div id="categorybox">
